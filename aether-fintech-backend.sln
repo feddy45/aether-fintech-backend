@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Api", "Web.Api\Web.Api.csproj", "{82B77D5F-FB8C-43E1-BA76-B8EB7E527641}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Shared", "Modules\Shared\Modules.Shared\Modules.Shared.csproj", "{CAB842E5-82E4-436A-9265-89D51C214C96}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82B77D5F-FB8C-43E1-BA76-B8EB7E527641}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82B77D5F-FB8C-43E1-BA76-B8EB7E527641}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82B77D5F-FB8C-43E1-BA76-B8EB7E527641}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82B77D5F-FB8C-43E1-BA76-B8EB7E527641}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAB842E5-82E4-436A-9265-89D51C214C96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAB842E5-82E4-436A-9265-89D51C214C96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+EndGlobal
