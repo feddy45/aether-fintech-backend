@@ -9,5 +9,6 @@ public class CardsDataAccessDependencyRegistration : IModuleDependencyRegistrati
     public void Execute(IServiceCollection services)
     {
         services.AddScoped<ICardsReader, CardsReader>();
+        services.AddScoped<ITransactionsReader, TransactionsReader>();
     }
 }

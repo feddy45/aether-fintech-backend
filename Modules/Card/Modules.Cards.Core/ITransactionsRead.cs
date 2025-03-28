@@ -4,7 +4,7 @@ using Modules.Shared.Results;
 
 namespace Modules.Cards.Core;
 
-public interface ICardsRead
+public interface ITransactionsRead
 {
-    Task<Either<ErrorResult, CardListDto>> Read();
+    Task<Either<ErrorResult, TransactionListDto>> Read(Guid cardId);
 }

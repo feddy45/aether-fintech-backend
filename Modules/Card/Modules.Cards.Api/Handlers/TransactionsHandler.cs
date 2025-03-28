@@ -1,16 +1,16 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Modules.Cards.Core;
-using Modules.Shared.Abstracts;
 using Modules.Shared.Results;
 
 namespace Modules.Cards.Api.Handlers;
 
-internal static class CardsHandler
+internal static class TransactionsHandler
 {
-    public static async Task<IResult> GetCards([FromServices] ICardsRead cardsRead, CancellationToken cancellationToken)
+    public static async Task<IResult> GetTransactions([FromServices] ITransactionsRead transactionsRead,
+        [FromRoute] Guid cardId, CancellationToken cancellationToken)
     {
-        var result = await cardsRead.Read();
+        var result = await transactionsRead.Read(cardId);
 
         return result.Match(Results.Ok,
             err => err switch

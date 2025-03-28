@@ -4,5 +4,5 @@ namespace Modules.Cards.Core.Dependencies;
 
 public interface ICardsReader
 {
-    Task<CardListDto> ReadAsync();
+    Task<CardListDto> Read();
 }

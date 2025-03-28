@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using Modules.Shared.DependencyInjection;
 using Microsoft.AspNetCore.Routing;
 using Modules.Cards.Api.Handlers;
 using Modules.Cards.Core.Dtos;
+using Modules.Shared.DependencyInjection;
 
 namespace Modules.Cards.Api;
 
@@ -16,6 +16,8 @@ public class CardsEndpointsMapper : IEndpointMapper
         cardsEndpoints.MapGet("", CardsHandler.GetCards)
             .Produces<CardListDto>();
 
+        cardsEndpoints.MapGet("{cardId:guid}/transactions", TransactionsHandler.GetTransactions)
+            .Produces<TransactionListDto>();
 
         return cardsEndpoints;
     }

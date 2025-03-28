@@ -6,14 +6,14 @@ using Modules.Shared.Results;
 
 namespace Modules.Cards.Core.Concretes;
 
-internal class CardsRead(ICardsReader cardsReader) : ICardsRead
+internal class TransactionsRead(ITransactionsReader transactionsReader) : ITransactionsRead
 {
-    public async Task<Either<ErrorResult, CardListDto>> Read()
+    public async Task<Either<ErrorResult, TransactionListDto>> Read(Guid cardId)
     {
 
         try
         {
-            return await cardsReader.Read();
+            return await transactionsReader.Read(cardId);
         }
         catch (Exception e)
         {
