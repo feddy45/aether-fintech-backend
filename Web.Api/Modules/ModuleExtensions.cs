@@ -20,9 +20,9 @@ public static class ModuleExtensions
 
     public static WebApplication MapEndpoints(this WebApplication app)
     {
-        var authorizedEndpoints = app.MapGroup("/nova/api").RequireAuthorization();
+        var endpoints = app.MapGroup("/api");
 
-        foreach (var module in RegisteredModules) module.MapEndpoints(authorizedEndpoints);
+        foreach (var module in RegisteredModules) module.MapEndpoints(endpoints);
 
         return app;
     }
