@@ -1,17 +1,30 @@
+version: '3.8'
+
 services:
   db:
     image: postgres:16
-    restart: always
+    container_name: my_postgres
+    restart: unless-stopped
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: fintech-database
       POSTGRES_DB: myapp
+    volumes:
+      - db_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+
+  db_init:
+    image: postgres:16
+    depends_on:
+      - db
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - ./init-db:/init-db
+    entrypoint: ["bash", "-c", "/init-db/init.sh"]
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: fintech-database
+      POSTGRES_DB: myapp
 
 volumes:
-  pgdata:
-
-
+  db_data:
