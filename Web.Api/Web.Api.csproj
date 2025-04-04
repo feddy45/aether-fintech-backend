@@ -9,15 +9,21 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.2"/>
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
-        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.9.0" />
-        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="7.0.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2"/>
+        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.9.0"/>
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="7.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Modules\Card\Modules.Cards.Api\Modules.Cards.Api.csproj" />
-      <ProjectReference Include="..\Modules\Card\Modules.Cards.DataAccess\Modules.Cards.DataAccess.csproj" />
-      <ProjectReference Include="..\Modules\Shared\Modules.Shared\Modules.Shared.csproj" />
+        <ProjectReference Include="..\Modules\Contacts\Modules.Contacts.Api\Modules.Contacts.Api.csproj"/>
+        <ProjectReference Include="..\Modules\Contacts\Modules.Contacts.Core\Modules.Contacts.Core.csproj"/>
+        <ProjectReference Include="..\Modules\Contacts\Modules.Contacts.DataAccess\Modules.Contacts.DataAccess.csproj"/>
+        <ProjectReference Include="..\Modules\Transfers\Modules.Transfers.Api\Modules.Transfers.Api.csproj"/>
+        <ProjectReference Include="..\Modules\Transfers\Modules.Transfers.Core\Modules.Transfers.Core.csproj"/>
+        <ProjectReference Include="..\Modules\Transfers\Modules.Transfers.DataAccess\Modules.Transfers.DataAccess.csproj"/>
+        <ProjectReference Include="..\Modules\Card\Modules.Cards.Api\Modules.Cards.Api.csproj"/>
+        <ProjectReference Include="..\Modules\Card\Modules.Cards.DataAccess\Modules.Cards.DataAccess.csproj"/>
+        <ProjectReference Include="..\Modules\Shared\Modules.Shared\Modules.Shared.csproj"/>
     </ItemGroup>
 
 </Project>
