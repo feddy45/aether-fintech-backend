@@ -10,4 +10,8 @@
         <ProjectReference Include="..\Modules.Transfers.Core\Modules.Transfers.Core.csproj"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <Folder Include="DatabaseModels\"/>
+    </ItemGroup>
+
 </Project>
