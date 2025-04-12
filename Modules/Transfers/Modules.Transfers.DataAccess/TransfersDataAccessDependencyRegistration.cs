@@ -19,5 +19,6 @@ public class TransfersDataAccessDependencyRegistration : IModuleDependencyRegist
         );
 
         services.AddScoped<ITransferWriter, TransferWriter>();
+        services.AddScoped<ITransfersReader, TransfersReader>();
     }
 }
