@@ -11,11 +11,10 @@ internal class TransferWriter(TransfersDbContext dbContext) : ITransferWriter
     {
         var newTransfer = new TransferEntity
         {
-            Id = Guid.NewGuid(),
             Iban = request.Iban,
             Beneficiary = request.Beneficiary,
             Amount = request.Amount,
-            Date = DateTime.Now,
+            Date = DateTime.UtcNow,
             Description = request.Description,
             CardId = request.CardId
         };
