@@ -1,7 +1,7 @@
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
 CREATE TABLE IF NOT EXISTS "User" (
-                                      id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     username TEXT NOT NULL UNIQUE,
     password TEXT NOT NULL,
     lastLogin TIMESTAMP,
@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS "User" (
     );
 
 CREATE TABLE IF NOT EXISTS "Card" (
-                                      id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     cardNumber TEXT NOT NULL,
     description TEXT,
     expirationDate DATE,
@@ -18,12 +18,22 @@ CREATE TABLE IF NOT EXISTS "Card" (
     );
 
 CREATE TABLE IF NOT EXISTS "Transaction" (
-                                             id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     date TIMESTAMP NOT NULL,
     description TEXT,
     type TEXT CHECK (type IN ('income', 'expense')),
     amount NUMERIC(12,2) NOT NULL,
     cardId UUID NOT NULL REFERENCES "Card"(id) ON DELETE CASCADE
+    );
+
+CREATE TABLE IF NOT EXISTS "Transfer" (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    iban TEXT NOT NULL,
+    beneficiary TEXT NOT NULL,
+    date TIMESTAMP NOT NULL,
+    description TEXT,
+    amount NUMERIC(12,2) NOT NULL,
+    cardid UUID NOT NULL REFERENCES "Card"(id) ON DELETE CASCADE
     );
 
 DO $$
@@ -42,6 +52,22 @@ END IF;
              ('c5a8d57a-cd34-43cd-b199-6ac1e05a631a', '340000000000009', 'American Express', '2026-10-31', 7000.00, '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df'),
              ('1c6cb34f-83a4-471f-8dc7-65505e0acfe4', '6011000000000004', 'Discover', '2027-09-30', 7000.00, '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df'),
              ('20694efb-1182-4414-9885-e9e92eaf4d32', '4111111111111112', 'Visa Classic', '2027-06-18', 1000.00, '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df');
+END IF;
+
+ IF NOT EXISTS (SELECT 1 FROM "Transfer") THEN
+        INSERT INTO "Transfer" 
+            (id, iban, beneficiary, date, description, amount, cardid) 
+        VALUES
+            ('b1a6e963-9c67-4f4c-8731-dfbc60eaf211', 'IT60X0542811101000000123456', 'Luca Bianchi',       '2024-06-15', 'Affitto giugno',              850.00, 'cf9e6485-db96-4942-a07c-65f106d47542'),
+            ('cc60db52-1f3f-4a83-8b75-c3c2ff7b2534', 'IT20B0300203280000400162345', 'Enel Energia',       '2024-07-02', 'Bolletta luce',              120.50, 'cf9e6485-db96-4942-a07c-65f106d47542'),
+            ('3d2a4f86-03b3-4f6b-8e37-e116a88b4527', 'IT40S0542811101000000123467', 'Tim S.p.A.',          '2024-08-10', 'Telefono luglio',            45.99,  'c39af9fe-604c-4354-b3cb-8f982e9d6007'),
+            ('9fc0c2d3-255b-4343-9a6e-35032f2b89d9', 'IT89A0300203280000400162789', 'Andrea Verdi',        '2024-09-05', 'Prestito personale',         500.00, 'c5a8d57a-cd34-43cd-b199-6ac1e05a631a'),
+            ('a55a4375-09c3-4c20-9d92-3cc20728593c', 'IT22P0760105138290760102487', 'Sara Neri',           '2024-10-18', 'Rimborso cena',              90.00,  '1c6cb34f-83a4-471f-8dc7-65505e0acfe4'),
+            ('01f8d0bc-7c69-47a2-9865-90e7e3aab10e', 'IT75P0760105138290760102090', 'Vodafone Italia',     '2024-11-22', 'Fattura internet casa',      65.30,  '20694efb-1182-4414-9885-e9e92eaf4d32'),
+            ('bff07392-42b3-4602-8bba-9fca456ff2dc', 'IT32C0200805070000102345678', 'Marco Gialli',        '2025-01-09', 'Regalo compleanno',          200.00, 'c39af9fe-604c-4354-b3cb-8f982e9d6007'),
+            ('e26b3530-f3cd-4b0e-83d2-9e9e9e6c4a3e', 'IT60X0542811101000000899999', 'Assicurazioni SPA',   '2025-02-15', 'RC Auto',                    530.25, 'c5a8d57a-cd34-43cd-b199-6ac1e05a631a'),
+            ('ec0bcbaf-9c20-41ef-9ec8-8d1a74149e4f', 'IT60R0300203280000400162999', 'Comune di Milano',    '2025-03-01', 'Tari annuale',               320.00, '1c6cb34f-83a4-471f-8dc7-65505e0acfe4'),
+            ('9ae5288f-8f52-4020-8186-19190e3d6c85', 'IT08D0300203280000400162444', 'Edison S.p.A.',        '2025-04-01', 'Gas marzo',                  140.75, '20694efb-1182-4414-9885-e9e92eaf4d32');
 END IF;
 
     IF NOT EXISTS (SELECT 1 FROM "Transaction") THEN

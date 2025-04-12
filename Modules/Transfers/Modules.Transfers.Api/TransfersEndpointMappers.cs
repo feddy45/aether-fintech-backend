@@ -13,6 +13,9 @@ public class TransfersEndpointsMapper : IEndpointMapper
     {
         var transfersEndpoints = endpoints.MapGroup("transfers").WithTags("Transfers");
 
+        transfersEndpoints.MapGet("", TransfersHandler.GetTransfers)
+            .Produces<TransferListDto>();
+
         transfersEndpoints.MapPost("", TransfersHandler.CreateTransfer)
             .Produces<CreatedTransferDto>();
 

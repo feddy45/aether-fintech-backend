@@ -21,4 +21,16 @@ internal static class TransfersHandler
                 _ => Results.BadRequest()
             });
     }
+
+    public static async Task<IResult> GetTransfers([FromServices] ITransfersRead transfersRead)
+    {
+        var result = await transfersRead.Read();
+
+        return result.Match(Results.Ok,
+            err => err switch
+            {
+                GenericErrorResult error => Results.BadRequest(error.Message),
+                _ => Results.BadRequest()
+            });
+    }
 }

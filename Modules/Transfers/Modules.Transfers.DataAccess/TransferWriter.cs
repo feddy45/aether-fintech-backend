@@ -1,12 +1,28 @@
 ﻿using Modules.Transfers.Core.Dependencies;
 using Modules.Transfers.Core.Dtos;
+using Modules.Transfers.DataAccess.DatabaseModels;
+using Modules.Transfers.DataAccess.Entities;
 
 namespace Modules.Transfers.DataAccess;
 
-internal class TransferWriter : ITransferWriter
+internal class TransferWriter(TransfersDbContext dbContext) : ITransferWriter
 {
-    public Task<CreatedTransferDto> Write(CreateTransferDto request)
+    public async Task<CreatedTransferDto> Write(CreateTransferDto request)
     {
-        return Task.FromResult(new CreatedTransferDto(Guid.NewGuid()));
+        var newTransfer = new TransferEntity
+        {
+            Id = Guid.NewGuid(),
+            Iban = request.Iban,
+            Beneficiary = request.Beneficiary,
+            Amount = request.Amount,
+            Date = DateTime.Now,
+            Description = request.Description,
+            CardId = request.CardId
+        };
+
+        dbContext.Add(newTransfer);
+        await dbContext.SaveChangesAsync();
+
+        return new CreatedTransferDto(newTransfer.Id);
     }
 }

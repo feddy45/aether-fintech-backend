@@ -9,5 +9,6 @@ public class TransfersCoreDependencyRegistration : IModuleDependencyRegistration
     public void Execute(IServiceCollection services)
     {
         services.AddScoped<ITransferWrite, TransferWrite>();
+        services.AddScoped<ITransfersRead, TransfersRead>();
     }
 }
