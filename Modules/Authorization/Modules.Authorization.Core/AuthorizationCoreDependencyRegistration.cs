@@ -9,5 +9,6 @@ public class AuthorizationCoreDependencyRegistration : IModuleDependencyRegistra
     public void Execute(IServiceCollection services)
     {
         services.AddScoped<IAuthenticator, Authenticator>();
+        services.AddScoped<IPasswordChanger, PasswordChanger>();
     }
 }

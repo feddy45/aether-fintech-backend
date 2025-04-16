@@ -1,13 +1,20 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Modules.Authorization.Core;
 using Modules.Authorization.Core.Dtos;
 
 namespace Modules.Authorization.Api.Handlers;
 
 internal static class ChangePasswordHandler
 {
-    public static async Task<IResult> ChangePassword([FromBody] LoginUserDto user)
+    public static async Task<IResult> ChangePassword([FromServices] IPasswordChanger passwordChanger,
+        [FromBody] ChangePasswordDto changePassword)
     {
-        return Results.Ok();
+        var result = await passwordChanger.ChangePassword(changePassword);
+
+        return result.Match(
+            token => Results.Ok(result),
+            _ => Results.Unauthorized()
+        );
     }
 }

@@ -9,6 +9,6 @@ until pg_isready -h db -U "$POSTGRES_USER" -d "$POSTGRES_DB"; do
 done
 
 echo "✅ Database pronto, eseguo script di inizializzazione..."
-psql -h db -U "$POSTGRES_USER" -d "$POSTGRES_DB" -f /docker-entrypoint-initdb.d/init-db.sql
+psql -h db -U "$POSTGRES_USER" -d "$POSTGRES_DB" -f /init-db/init-db.sql
 
 echo "🎉 Inizializzazione completata!"

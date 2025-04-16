@@ -19,7 +19,8 @@ services:
     depends_on:
       - db
     volumes:
-      - ./init-db:/docker-entrypoint-initdb.d
+      - ./init-db:/init-db
+    entrypoint: ["bash", "-c", "/init-db/init.sh"]
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: fintech-database

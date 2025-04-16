@@ -5,8 +5,10 @@ CREATE TABLE IF NOT EXISTS "User" (
     username TEXT NOT NULL UNIQUE,
     password TEXT NOT NULL,
     lastLogin TIMESTAMP,
-    dateOfBirth DATE
-    );
+    dateOfBirth DATE NOT NULL,
+    firstName TEXT NOT NULL,
+    lastName TEXT NOT NULL
+);
 
 CREATE TABLE IF NOT EXISTS "Card" (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -39,8 +41,22 @@ CREATE TABLE IF NOT EXISTS "Transfer" (
 DO $$
 BEGIN
     IF NOT EXISTS (SELECT 1 FROM "User") THEN
-        INSERT INTO "User" (id, username, password)
-        VALUES ('1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df', 'admin', 'secure_hashed_password');
+        INSERT INTO "User" (
+            id,
+            username,
+            password,
+            dateOfBirth,
+            firstName,
+            lastName
+        )
+        VALUES (
+            '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df',
+            'federico',
+            '$2a$11$123456789012345678901uWV.NuVfHIEZ2er6SgOJg2UJ8U/y7Rqa',
+            '1995-03-08',
+            'Federico',
+            'Ghezzo'
+        );
 END IF;
 
     IF NOT EXISTS (SELECT 1 FROM "Card") THEN

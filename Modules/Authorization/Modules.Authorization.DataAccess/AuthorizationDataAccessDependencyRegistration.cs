@@ -22,6 +22,7 @@ public class AuthorizationDataAccessDependencyRegistration : IModuleDependencyRe
 
         services.AddScoped<IUserReader, UserReader>();
         services.AddScoped<IJwtCreator, JwtCreator>();
+        services.AddScoped<IPasswordChange, PasswordChange>();
         services.AddScoped<IPasswordHasher<UserEntity>, PasswordHasher<UserEntity>>();
     }
 }
