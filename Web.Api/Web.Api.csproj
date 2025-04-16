@@ -15,6 +15,8 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\Modules\Authorization\Modules.Authorization.Api\Modules.Authorization.Api.csproj"/>
+        <ProjectReference Include="..\Modules\Authorization\Modules.Authorization.DataAccess\Modules.Authorization.DataAccess.csproj"/>
         <ProjectReference Include="..\Modules\Contacts\Modules.Contacts.Api\Modules.Contacts.Api.csproj"/>
         <ProjectReference Include="..\Modules\Contacts\Modules.Contacts.Core\Modules.Contacts.Core.csproj"/>
         <ProjectReference Include="..\Modules\Contacts\Modules.Contacts.DataAccess\Modules.Contacts.DataAccess.csproj"/>

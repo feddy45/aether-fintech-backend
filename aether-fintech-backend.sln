@@ -6,7 +6,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Shared", "Modules\S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{E88C35A7-F2EC-45C6-AE19-67F7E8023688}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules.Cards", "Modules.Cards", "{10004429-A9F2-4A73-B9E3-5D61E3E1ECE8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cards", "Cards", "{10004429-A9F2-4A73-B9E3-5D61E3E1ECE8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Cards.Api", "Modules\Card\Modules.Cards.Api\Modules.Cards.Api.csproj", "{F0731054-5138-48C8-BA22-E986D586CFA9}"
 EndProject
@@ -14,7 +14,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Cards.Core", "Modul
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Cards.DataAccess", "Modules\Card\Modules.Cards.DataAccess\Modules.Cards.DataAccess.csproj", "{68BFFEBC-1E7A-4DB7-9656-5CA4845951C6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules.Contacts", "Modules.Contacts", "{762E6047-2821-486D-832E-809403FD8F9F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contacts", "Contacts", "{762E6047-2821-486D-832E-809403FD8F9F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Contacts.Api", "Modules\Contacts\Modules.Contacts.Api\Modules.Contacts.Api.csproj", "{47B38417-456C-4875-B441-5E97BD7A8D74}"
 EndProject
@@ -22,13 +22,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Contacts.Core", "Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Contacts.DataAccess", "Modules\Contacts\Modules.Contacts.DataAccess\Modules.Contacts.DataAccess.csproj", "{82DBCE08-967E-4002-8F4A-35A1A01E77DD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules.Transfers", "Modules.Transfers", "{D5D22C23-837A-4520-88B0-0BDBF0317245}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Transfers", "Transfers", "{D5D22C23-837A-4520-88B0-0BDBF0317245}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Transfers.Api", "Modules\Transfers\Modules.Transfers.Api\Modules.Transfers.Api.csproj", "{CFE48BB5-42E4-40A6-A868-3F08DE31E8BF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Transfers.Core", "Modules\Transfers\Modules.Transfers.Core\Modules.Transfers.Core.csproj", "{786BEBAE-823B-480C-BDD0-7CA8FA2C3BEF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Transfers.DataAccess", "Modules\Transfers\Modules.Transfers.DataAccess\Modules.Transfers.DataAccess.csproj", "{4097AABC-8B33-415A-9F48-FCFA0C9F54FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authorization", "Authorization", "{95A18CD8-3995-4119-918C-ADA6825D004F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Authorization.Api", "Modules\Authorization\Modules.Authorization.Api\Modules.Authorization.Api.csproj", "{4C811D23-25A0-4B12-98D4-319DE0F8765B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Authorization.Core", "Modules\Authorization\Modules.Authorization.Core\Modules.Authorization.Core.csproj", "{53537576-177A-45EC-9AD7-E1E954D94088}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Authorization.DataAccess", "Modules\Authorization\Modules.Authorization.DataAccess\Modules.Authorization.DataAccess.csproj", "{F768E4E2-8A0B-494A-A19C-9ECFEC49739E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -78,6 +86,18 @@ Global
 		{4097AABC-8B33-415A-9F48-FCFA0C9F54FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4097AABC-8B33-415A-9F48-FCFA0C9F54FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4097AABC-8B33-415A-9F48-FCFA0C9F54FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C811D23-25A0-4B12-98D4-319DE0F8765B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C811D23-25A0-4B12-98D4-319DE0F8765B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C811D23-25A0-4B12-98D4-319DE0F8765B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C811D23-25A0-4B12-98D4-319DE0F8765B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53537576-177A-45EC-9AD7-E1E954D94088}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53537576-177A-45EC-9AD7-E1E954D94088}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53537576-177A-45EC-9AD7-E1E954D94088}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53537576-177A-45EC-9AD7-E1E954D94088}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F768E4E2-8A0B-494A-A19C-9ECFEC49739E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F768E4E2-8A0B-494A-A19C-9ECFEC49739E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F768E4E2-8A0B-494A-A19C-9ECFEC49739E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F768E4E2-8A0B-494A-A19C-9ECFEC49739E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{CAB842E5-82E4-436A-9265-89D51C214C96} = {E88C35A7-F2EC-45C6-AE19-67F7E8023688}
@@ -93,5 +113,9 @@ Global
 		{CFE48BB5-42E4-40A6-A868-3F08DE31E8BF} = {D5D22C23-837A-4520-88B0-0BDBF0317245}
 		{786BEBAE-823B-480C-BDD0-7CA8FA2C3BEF} = {D5D22C23-837A-4520-88B0-0BDBF0317245}
 		{4097AABC-8B33-415A-9F48-FCFA0C9F54FD} = {D5D22C23-837A-4520-88B0-0BDBF0317245}
+		{95A18CD8-3995-4119-918C-ADA6825D004F} = {E88C35A7-F2EC-45C6-AE19-67F7E8023688}
+		{4C811D23-25A0-4B12-98D4-319DE0F8765B} = {95A18CD8-3995-4119-918C-ADA6825D004F}
+		{53537576-177A-45EC-9AD7-E1E954D94088} = {95A18CD8-3995-4119-918C-ADA6825D004F}
+		{F768E4E2-8A0B-494A-A19C-9ECFEC49739E} = {95A18CD8-3995-4119-918C-ADA6825D004F}
 	EndGlobalSection
 EndGlobal
