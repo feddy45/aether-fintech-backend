@@ -11,7 +11,7 @@ public class ContactsEndpointsMapper : IEndpointMapper
 {
     public IEndpointRouteBuilder MapEndpoints(IEndpointRouteBuilder endpoints)
     {
-        var contactsEndpoints = endpoints.MapGroup("contacts").WithTags("Contacts");
+        var contactsEndpoints = endpoints.MapGroup("contacts").WithTags("Contacts").RequireAuthorization();
 
         contactsEndpoints.MapGet("", ContactsHandler.GetContacts)
             .Produces<ContactListDto>();

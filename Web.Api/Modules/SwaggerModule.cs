@@ -38,12 +38,14 @@ public sealed class SwaggerModule : Module
                 }
             });
 
-            setup.AddSecurityDefinition(TokenId, new OpenApiSecurityScheme
+            setup.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
             {
+                Description = "JWT Authorization header using the Bearer scheme. Example: 'Bearer {token}'",
+                Name = "Authorization",
                 In = ParameterLocation.Header,
-                Name = TokenId,
-                Type = SecuritySchemeType.ApiKey,
-                Description = "Insert your API token"
+                Type = SecuritySchemeType.Http,
+                Scheme = "bearer",
+                BearerFormat = "JWT"
             });
 
             setup.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -54,7 +56,7 @@ public sealed class SwaggerModule : Module
                         Reference = new OpenApiReference
                         {
                             Type = ReferenceType.SecurityScheme,
-                            Id = TokenId
+                            Id = "Bearer"
                         }
                     },
                     Array.Empty<string>()

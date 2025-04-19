@@ -11,7 +11,7 @@ public class TransfersEndpointsMapper : IEndpointMapper
 {
     public IEndpointRouteBuilder MapEndpoints(IEndpointRouteBuilder endpoints)
     {
-        var transfersEndpoints = endpoints.MapGroup("transfers").WithTags("Transfers");
+        var transfersEndpoints = endpoints.MapGroup("transfers").WithTags("Transfers").RequireAuthorization();
 
         transfersEndpoints.MapGet("", TransfersHandler.GetTransfers)
             .Produces<TransferListDto>();

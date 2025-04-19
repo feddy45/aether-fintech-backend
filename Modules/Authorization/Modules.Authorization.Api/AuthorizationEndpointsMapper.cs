@@ -13,7 +13,7 @@ public class AuthorizationEndpointsMapper : IEndpointMapper
         var authRoutes = endpoints.MapGroup("auth").WithTags("Authorization");
 
         authRoutes.MapPost("login", LoginHandler.Login).AllowAnonymous();
-        authRoutes.MapPost("change-password", ChangePasswordHandler.ChangePassword).AllowAnonymous();
+        authRoutes.MapPost("change-password", ChangePasswordHandler.ChangePassword).RequireAuthorization();
 
         return endpoints;
     }

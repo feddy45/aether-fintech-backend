@@ -11,7 +11,7 @@ public class CardsEndpointsMapper : IEndpointMapper
 {
     public IEndpointRouteBuilder MapEndpoints(IEndpointRouteBuilder endpoints)
     {
-        var cardsEndpoints = endpoints.MapGroup("cards").WithTags("Cards");
+        var cardsEndpoints = endpoints.MapGroup("cards").WithTags("Cards").RequireAuthorization();
 
         cardsEndpoints.MapGet("", CardsHandler.GetCards)
             .Produces<CardListDto>();
