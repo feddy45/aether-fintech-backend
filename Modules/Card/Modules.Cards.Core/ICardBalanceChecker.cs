@@ -2,10 +2,9 @@ using LanguageExt;
 using Modules.Cards.Core.Dtos;
 using Modules.Shared.Results;
 
-namespace Modules.Cards.Core.Dependencies;
+namespace Modules.Cards.Core;
 
-public interface ICardsReader
+public interface ICardBalanceChecker
 {
-    Task<CardListDto> Read();
     Task<Either<ErrorResult, CardBalanceCheckedDto>> CheckBalance(CardBalanceCheckDto checkDto);
 }

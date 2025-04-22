@@ -7,8 +7,5 @@ public record TransactionEntity
     public string? Description { get; init; }
     public required string Type { get; init; }
     public decimal Amount { get; init; }
-
     public Guid CardId { get; init; }
-
-    public required CardEntity Card { get; init; }
 }

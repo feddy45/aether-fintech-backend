@@ -10,5 +10,7 @@ public class CardsCoreDependencyRegistration : IModuleDependencyRegistration
     {
         services.AddScoped<ICardsRead, CardsRead>();
         services.AddScoped<ITransactionsRead, TransactionsRead>();
+        services.AddScoped<ICardBalanceChecker, CardBalanceChecker>();
+        services.AddScoped<ITransactionWrite, TransactionWrite>();
     }
 }

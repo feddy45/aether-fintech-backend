@@ -1,20 +1,20 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
+using Modules.Mediator.Api.Handlers;
 using Modules.Shared.DependencyInjection;
-using Modules.Transfers.Api.Handlers;
 using Modules.Transfers.Core.Dtos;
 
-namespace Modules.Transfers.Api;
+namespace Modules.Mediator.Api;
 
-public class TransfersEndpointsMapper : IEndpointMapper
+public class MediatorEndpointsMapper : IEndpointMapper
 {
     public IEndpointRouteBuilder MapEndpoints(IEndpointRouteBuilder endpoints)
     {
         var transfersEndpoints = endpoints.MapGroup("transfers").WithTags("Transfers").RequireAuthorization();
 
-        transfersEndpoints.MapGet("", TransfersHandler.GetTransfers)
-            .Produces<TransferListDto>();
+        transfersEndpoints.MapPost("", MediatorTransfersHandler.CreateTransfer)
+            .Produces<CreatedTransferDto>();
 
         return transfersEndpoints;
     }

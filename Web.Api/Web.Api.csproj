@@ -21,6 +21,7 @@
         <ProjectReference Include="..\Modules\Contacts\Modules.Contacts.Api\Modules.Contacts.Api.csproj"/>
         <ProjectReference Include="..\Modules\Contacts\Modules.Contacts.Core\Modules.Contacts.Core.csproj"/>
         <ProjectReference Include="..\Modules\Contacts\Modules.Contacts.DataAccess\Modules.Contacts.DataAccess.csproj"/>
+        <ProjectReference Include="..\Modules\Mediator\Modules.Mediator.Api\Modules.Mediator.Api.csproj"/>
         <ProjectReference Include="..\Modules\Transfers\Modules.Transfers.Api\Modules.Transfers.Api.csproj"/>
         <ProjectReference Include="..\Modules\Transfers\Modules.Transfers.Core\Modules.Transfers.Core.csproj"/>
         <ProjectReference Include="..\Modules\Transfers\Modules.Transfers.DataAccess\Modules.Transfers.DataAccess.csproj"/>

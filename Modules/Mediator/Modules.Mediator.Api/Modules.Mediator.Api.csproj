@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\Card\Modules.Cards.Core\Modules.Cards.Core.csproj"/>
+        <ProjectReference Include="..\..\Shared\Modules.Shared\Modules.Shared.csproj"/>
+        <ProjectReference Include="..\..\Transfers\Modules.Transfers.Core\Modules.Transfers.Core.csproj"/>
+    </ItemGroup>
+
+</Project>

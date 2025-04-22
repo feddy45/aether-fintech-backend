@@ -1,18 +1,17 @@
 ﻿using LanguageExt;
 using Modules.Cards.Core.Dependencies;
 using Modules.Cards.Core.Dtos;
-using Modules.Cards.Core.Results;
 using Modules.Shared.Results;
 
 namespace Modules.Cards.Core.Concretes;
 
-internal class TransactionsRead(ITransactionsReader transactionsReader) : ITransactionsRead
+internal class CardBalanceChecker(ICardsReader cardsReader) : ICardBalanceChecker
 {
-    public async Task<Either<ErrorResult, TransactionListDto>> Read(Guid cardId)
+    public async Task<Either<ErrorResult, CardBalanceCheckedDto>> CheckBalance(CardBalanceCheckDto checkDto)
     {
         try
         {
-            return await transactionsReader.Read(cardId);
+            return await cardsReader.CheckBalance(checkDto);
         }
         catch (Exception e)
         {

@@ -4,7 +4,7 @@ public record TransferDto(
     Guid Id,
     string Iban,
     string Beneficiary,
-    float Amount,
+    decimal Amount,
     DateTime Date,
     string Description,
     Guid CardId);
