@@ -44,7 +44,7 @@ internal static class MediatorTransfersHandler
             request.Amount,
             DateTime.UtcNow,
             request.Description,
-            "Transfer",
+            "transfer",
             request.CardId
         ));
 

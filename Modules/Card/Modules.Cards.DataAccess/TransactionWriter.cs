@@ -11,13 +11,17 @@ internal class TransactionWriter(CardsDbContext dbContext) : ITransactionWriter
 {
     public async Task<Either<ErrorResult, CreatedTransactionDto>> Write(CreateTransactionDto request)
     {
+        var card = dbContext.Card.FirstOrDefault(c => c.Id == request.CardId);
+        if (card == null) return new GenericErrorResult("Card not found");
+
         var newTransfer = new TransactionEntity
         {
             Date = DateTime.UtcNow,
             Description = request.Description,
             Amount = request.Amount,
             Type = request.Type,
-            CardId = request.CardId
+            CardId = request.CardId,
+            Card = card
         };
 
         dbContext.Add(newTransfer);

@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS "Transaction" (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     date TIMESTAMP NOT NULL,
     description TEXT,
-    type TEXT CHECK (type IN ('income', 'expense')),
+    type TEXT CHECK (type IN ('income', 'expense', 'transfer')),
     amount NUMERIC(12,2) NOT NULL,
     cardId UUID NOT NULL REFERENCES "Card"(id) ON DELETE CASCADE
     );
