@@ -15,7 +15,6 @@ CREATE TABLE IF NOT EXISTS "Card" (
     cardNumber TEXT NOT NULL,
     description TEXT,
     expirationDate DATE,
-    amount NUMERIC(12,2) DEFAULT 0,
     userId UUID NOT NULL REFERENCES "User"(id) ON DELETE CASCADE
     );
 
@@ -61,13 +60,13 @@ END IF;
 
     IF NOT EXISTS (SELECT 1 FROM "Card") THEN
         INSERT INTO "Card" 
-            (id, cardnumber, description, expirationdate, amount, userid) 
+            (id, cardnumber, description, expirationdate, userid) 
         VALUES
-             ('cf9e6485-db96-4942-a07c-65f106d47542', '4111111111111111', 'Visa Platinum', '2025-12-31', 5000.00, '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df'),
-             ('c39af9fe-604c-4354-b3cb-8f982e9d6007', '5500000000000004', 'MasterCard Gold', '2028-11-30', 3000.00, '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df'),
-             ('c5a8d57a-cd34-43cd-b199-6ac1e05a631a', '340000000000009', 'American Express', '2026-10-31', 7000.00, '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df'),
-             ('1c6cb34f-83a4-471f-8dc7-65505e0acfe4', '6011000000000004', 'Discover', '2027-09-30', 7000.00, '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df'),
-             ('20694efb-1182-4414-9885-e9e92eaf4d32', '4111111111111112', 'Visa Classic', '2027-06-18', 1000.00, '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df');
+             ('cf9e6485-db96-4942-a07c-65f106d47542', '4111111111111111', 'Visa Platinum', '2025-12-31',  '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df'),
+             ('c39af9fe-604c-4354-b3cb-8f982e9d6007', '5500000000000004', 'MasterCard Gold', '2028-11-30',  '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df'),
+             ('c5a8d57a-cd34-43cd-b199-6ac1e05a631a', '340000000000009', 'American Express', '2026-10-31',  '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df'),
+             ('1c6cb34f-83a4-471f-8dc7-65505e0acfe4', '6011000000000004', 'Discover', '2027-09-30',  '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df'),
+             ('20694efb-1182-4414-9885-e9e92eaf4d32', '4111111111111112', 'Visa Classic', '2027-06-18',  '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df');
 END IF;
 
  IF NOT EXISTS (SELECT 1 FROM "Transfer") THEN

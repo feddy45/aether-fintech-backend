@@ -18,7 +18,6 @@ public class CardsDbContext(DbContextOptions<CardsDbContext> options) : DbContex
             entity.Property(e => e.CardNumber).HasColumnName("cardnumber");
             entity.Property(e => e.Description).HasColumnName("description");
             entity.Property(e => e.ExpirationDate).HasColumnName("expirationdate");
-            entity.Property(e => e.Amount).HasColumnName("amount");
             entity.Property(e => e.UserId).HasColumnName("userid");
         });
 

@@ -6,7 +6,6 @@ public sealed class SwaggerModule : Module
 {
     private const string AppName = "Aether Fintech Backend";
     private const string SwaggerPrefix = "api/v1/swagger";
-    private const string TokenId = "apiToken";
 
     public override WebApplication Configure(WebApplication app)
     {
@@ -59,7 +58,7 @@ public sealed class SwaggerModule : Module
                             Id = "Bearer"
                         }
                     },
-                    Array.Empty<string>()
+                    []
                 }
             });
         });
