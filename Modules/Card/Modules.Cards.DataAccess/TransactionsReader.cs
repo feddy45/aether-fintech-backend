@@ -12,6 +12,7 @@ internal class TransactionsReader(CardsDbContext dbContext) : ITransactionsReade
         var transactions = dbContext.Transaction
             .AsNoTracking()
             .Where(transaction => transaction.CardId == cardId)
+            .OrderByDescending(t => t.Date)
             .Select(transaction => new TransactionDto(
                 transaction.Id,
                 transaction.Amount,

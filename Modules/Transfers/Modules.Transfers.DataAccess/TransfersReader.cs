@@ -9,8 +9,9 @@ internal class TransfersReader(TransfersDbContext dbContext) : ITransfersReader
 {
     public async Task<TransferListDto> Read()
     {
-        var cards = await dbContext.Transfer
+        var transfers = await dbContext.Transfer
             .AsNoTracking()
+            .OrderByDescending(t => t.Date)
             .Select(transfer => new TransferDto(
                 transfer.Id,
                 transfer.Iban,
@@ -22,6 +23,6 @@ internal class TransfersReader(TransfersDbContext dbContext) : ITransfersReader
             ))
             .ToListAsync();
 
-        return new TransferListDto(cards);
+        return new TransferListDto(transfers);
     }
 }
