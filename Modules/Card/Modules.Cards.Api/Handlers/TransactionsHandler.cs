@@ -8,7 +8,7 @@ namespace Modules.Cards.Api.Handlers;
 internal static class TransactionsHandler
 {
     public static async Task<IResult> GetTransactions([FromServices] ITransactionsRead transactionsRead,
-        [FromRoute] Guid cardId, CancellationToken cancellationToken)
+        [FromRoute] Guid cardId)
     {
         var result = await transactionsRead.Read(cardId);
 

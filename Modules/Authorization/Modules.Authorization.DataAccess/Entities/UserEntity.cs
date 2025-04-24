@@ -7,6 +7,7 @@ public record UserEntity
     public required string Password { get; set; }
     public DateTime? LastLogin { get; init; }
     public DateTime DateOfBirth { get; init; }
+    public required string Email { get; init; }
     public required string FirstName { get; init; }
     public required string LastName { get; init; }
 }

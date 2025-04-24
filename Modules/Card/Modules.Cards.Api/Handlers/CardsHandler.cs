@@ -8,7 +8,7 @@ namespace Modules.Cards.Api.Handlers;
 
 internal static class CardsHandler
 {
-    public static async Task<IResult> GetCards([FromServices] ICardsRead cardsRead, CancellationToken cancellationToken)
+    public static async Task<IResult> GetCards([FromServices] ICardsRead cardsRead)
     {
         var result = await cardsRead.Read();
 

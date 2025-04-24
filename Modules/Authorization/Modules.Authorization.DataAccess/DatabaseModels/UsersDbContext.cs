@@ -17,6 +17,7 @@ public class UsersDbContext(DbContextOptions<UsersDbContext> options) : DbContex
             entity.Property(e => e.Username).HasColumnName("username");
             entity.Property(e => e.Password).HasColumnName("password");
             entity.Property(e => e.LastLogin).HasColumnName("lastlogin");
+            entity.Property(e => e.Email).HasColumnName("email");
             entity.Property(e => e.DateOfBirth).HasColumnName("dateofbirth");
             entity.Property(e => e.FirstName).HasColumnName("firstname");
             entity.Property(e => e.LastName).HasColumnName("lastname");

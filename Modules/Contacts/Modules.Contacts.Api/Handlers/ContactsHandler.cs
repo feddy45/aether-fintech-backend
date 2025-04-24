@@ -7,8 +7,7 @@ namespace Modules.Contacts.Api.Handlers;
 
 internal static class ContactsHandler
 {
-    public static async Task<IResult> GetContacts([FromServices] IContactsRead contactsRead,
-        CancellationToken cancellationToken)
+    public static async Task<IResult> GetContacts([FromServices] IContactsRead contactsRead)
     {
         var result = await contactsRead.Read();
 

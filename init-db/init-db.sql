@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS "User" (
     username TEXT NOT NULL UNIQUE,
     password TEXT NOT NULL,
     lastLogin TIMESTAMP,
+    email TEXT NOT NULL,
     dateOfBirth DATE NOT NULL,
     firstName TEXT NOT NULL,
     lastName TEXT NOT NULL
@@ -45,14 +46,16 @@ BEGIN
             username,
             password,
             dateOfBirth,
+            email,
             firstName,
             lastName
         )
         VALUES (
             '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df',
             'federico',
-            '$2a$11$123456789012345678901uWV.NuVfHIEZ2er6SgOJg2UJ8U/y7Rqa',
+            'AQAAAAIAAYagAAAAEMcL8OpZkMzUfwNmlay+7NU8RML68iutx4d/xIiSRWIfL17Y2uoq79ofIr8o39r6bA==',
             '1995-03-08',
+        'federico.ghezzo95@gmail.com',
             'Federico',
             'Ghezzo'
         );

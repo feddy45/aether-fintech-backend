@@ -18,7 +18,8 @@ internal class JwtCreator(IConfiguration config) : IJwtCreator
             new(JwtRegisteredClaimNames.UniqueName, user.Username),
             new(JwtRegisteredClaimNames.GivenName, user.FirstName),
             new(JwtRegisteredClaimNames.FamilyName, user.LastName),
-            new(JwtRegisteredClaimNames.Birthdate, user.DateOfBirth.ToString("dd-MM-yyyy"))
+            new(JwtRegisteredClaimNames.Birthdate, user.DateOfBirth.ToString("dd-MM-yyyy")),
+            new(JwtRegisteredClaimNames.Email, user.Email)
         ];
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]!));

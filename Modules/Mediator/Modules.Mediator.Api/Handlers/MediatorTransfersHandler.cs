@@ -14,8 +14,7 @@ internal static class MediatorTransfersHandler
         [FromServices] ITransferWrite transferWrite,
         [FromServices] ICardBalanceChecker cardBalanceChecker,
         [FromServices] ITransactionWrite transactionWrite,
-        [FromBody] CreateTransferDto request,
-        CancellationToken cancellationToken)
+        [FromBody] CreateTransferDto request)
     {
         var balanceResult = await cardBalanceChecker.CheckBalance(
             new CardBalanceCheckDto(request.CardId, request.Amount)

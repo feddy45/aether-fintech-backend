@@ -19,7 +19,7 @@ internal class UserReader(UsersDbContext dbContext, IPasswordHasher<UserEntity> 
 
 
         return result == PasswordVerificationResult.Success
-            ? new UserDto(user.Id, user.Username, user.FirstName, user.LastName, user.DateOfBirth)
+            ? new UserDto(user.Id, user.Username, user.FirstName, user.LastName, user.Email, user.DateOfBirth)
             : null;
     }
 }
