@@ -11,6 +11,14 @@ CREATE TABLE IF NOT EXISTS "User" (
     lastName TEXT NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS "BankAccount" (
+     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+     iban TEXT NOT NULL UNIQUE,
+     name TEXT NOT NULL,
+     userId UUID NOT NULL,
+     createdAt TIMESTAMP NOT NULL DEFAULT now()
+);
+
 CREATE TABLE IF NOT EXISTS "Card" (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     cardNumber TEXT NOT NULL,
@@ -59,7 +67,33 @@ BEGIN
             'Federico',
             'Ghezzo'
         );
-END IF;
+    END IF;
+    
+    IF NOT EXISTS (SELECT 1 FROM "BankAccount") THEN
+        INSERT INTO "BankAccount" (id, iban, name, userId, createdAt)
+        VALUES
+            (
+                '3fa85f64-5717-4562-b3fc-2c963f66afa1',
+                'IT60X0542811101000000123456',
+                'Conto Principale',
+                '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df',
+                now()
+            ),
+            (
+                '7abf14c1-e8f0-4bd7-b9b2-c765dee8f18a',
+                'IT45F0300203280000400790042',
+                'Conto Risparmio',
+                '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df',
+                now()
+            ),
+            (
+                'd51e3ef7-e035-4667-8df8-9f84b35b14bb',
+                'IT73W0103076271000000012345',
+                'Conto Spese',
+                '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df',
+                now()
+            );
+    END IF;
 
     IF NOT EXISTS (SELECT 1 FROM "Card") THEN
         INSERT INTO "Card" 
@@ -70,7 +104,7 @@ END IF;
              ('c5a8d57a-cd34-43cd-b199-6ac1e05a631a', '340000000000009', 'American Express', '2026-10-31',  '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df'),
              ('1c6cb34f-83a4-471f-8dc7-65505e0acfe4', '6011000000000004', 'Discover', '2027-09-30',  '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df'),
              ('20694efb-1182-4414-9885-e9e92eaf4d32', '4111111111111112', 'Visa Classic', '2027-06-18',  '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df');
-END IF;
+    END IF;
 
  IF NOT EXISTS (SELECT 1 FROM "Transfer") THEN
         INSERT INTO "Transfer" 
