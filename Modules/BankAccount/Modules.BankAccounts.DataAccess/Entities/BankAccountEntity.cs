@@ -7,4 +7,5 @@ public record BankAccountEntity
     public required string Name { get; init; }
     public Guid UserId { get; init; }
     public DateTime CreatedAt { get; init; }
+    public ICollection<TransactionEntity> Transactions { get; init; } = new List<TransactionEntity>();
 }

@@ -8,5 +8,5 @@ public record TransferEntity
     public DateTime Date { get; init; }
     public decimal Amount { get; init; }
     public required string Description { get; init; }
-    public Guid CardId { get; init; }
+    public Guid BankAccountId { get; init; }
 }

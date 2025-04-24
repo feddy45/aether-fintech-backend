@@ -1,8 +1,8 @@
 using LanguageExt;
-using Modules.Cards.Core.Dtos;
+using Modules.BankAccounts.Core.Dtos;
 using Modules.Shared.Results;
 
-namespace Modules.Cards.Core.Dependencies;
+namespace Modules.BankAccounts.Core.Dependencies;
 
 public interface ITransactionWriter
 {

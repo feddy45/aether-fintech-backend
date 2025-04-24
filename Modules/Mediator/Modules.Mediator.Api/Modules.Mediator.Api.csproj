@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\BankAccount\Modules.BankAccounts.Core\Modules.BankAccounts.Core.csproj"/>
         <ProjectReference Include="..\..\Card\Modules.Cards.Core\Modules.Cards.Core.csproj"/>
         <ProjectReference Include="..\..\Shared\Modules.Shared\Modules.Shared.csproj"/>
         <ProjectReference Include="..\..\Transfers\Modules.Transfers.Core\Modules.Transfers.Core.csproj"/>

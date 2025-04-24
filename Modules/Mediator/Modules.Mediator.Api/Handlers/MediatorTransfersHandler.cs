@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Modules.Cards.Core;
-using Modules.Cards.Core.Dtos;
+using Modules.BankAccounts.Core;
+using Modules.BankAccounts.Core.Dtos;
 using Modules.Shared.Results;
 using Modules.Transfers.Core;
 using Modules.Transfers.Core.Dtos;
@@ -12,12 +12,12 @@ internal static class MediatorTransfersHandler
 {
     public static async Task<IResult> CreateTransfer(
         [FromServices] ITransferWrite transferWrite,
-        [FromServices] ICardBalanceChecker cardBalanceChecker,
+        [FromServices] IBankAccountBalanceChecker bankAccountBalanceChecker,
         [FromServices] ITransactionWrite transactionWrite,
         [FromBody] CreateTransferDto request)
     {
-        var balanceResult = await cardBalanceChecker.CheckBalance(
-            new CardBalanceCheckDto(request.CardId, request.Amount)
+        var balanceResult = await bankAccountBalanceChecker.CheckBalance(
+            new BankAccountBalanceCheckDto(request.CardId, request.Amount)
         );
 
         return await balanceResult.MatchAsync(
@@ -31,12 +31,12 @@ internal static class MediatorTransfersHandler
     }
 
     private static async Task<IResult> ManageCheckResultAsync(
-        CardBalanceCheckedDto cardBalanceCheck,
+        BankAccountBalanceCheckedDto accountChecked,
         CreateTransferDto request,
         ITransactionWrite transactionWrite,
         ITransferWrite transferWrite)
     {
-        if (!cardBalanceCheck.IsBalanceSufficent)
+        if (!accountChecked.IsBalanceSufficent)
             return Results.BadRequest("Saldo insufficiente");
 
         var transactionResult = await transactionWrite.Write(new CreateTransactionDto(

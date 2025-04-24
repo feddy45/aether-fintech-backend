@@ -1,11 +1,8 @@
-using LanguageExt;
 using Modules.Cards.Core.Dtos;
-using Modules.Shared.Results;
 
 namespace Modules.Cards.Core.Dependencies;
 
 public interface ICardsReader
 {
-    Task<CardListDto> Read();
-    Task<Either<ErrorResult, CardBalanceCheckedDto>> CheckBalance(CardBalanceCheckDto checkDto);
+    Task<CardListDto> Read(Guid bankAccountId);
 }

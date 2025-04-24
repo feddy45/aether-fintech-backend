@@ -1,9 +1,9 @@
 ﻿using LanguageExt;
-using Modules.Cards.Core.Dependencies;
-using Modules.Cards.Core.Dtos;
+using Modules.BankAccounts.Core.Dependencies;
+using Modules.BankAccounts.Core.Dtos;
 using Modules.Shared.Results;
 
-namespace Modules.Cards.Core.Concretes;
+namespace Modules.BankAccounts.Core.Concretes;
 
 internal class TransactionWrite(ITransactionWriter transactionWriter) : ITransactionWrite
 {

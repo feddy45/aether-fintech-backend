@@ -1,16 +1,16 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Modules.Cards.Core;
+using Modules.BankAccounts.Core;
 using Modules.Shared.Results;
 
-namespace Modules.Cards.Api.Handlers;
+namespace Modules.BankAccounts.Api.Handlers;
 
 internal static class TransactionsHandler
 {
     public static async Task<IResult> GetTransactions([FromServices] ITransactionsRead transactionsRead,
-        [FromRoute] Guid cardId)
+        [FromRoute] Guid bankAccountId)
     {
-        var result = await transactionsRead.Read(cardId);
+        var result = await transactionsRead.Read(bankAccountId);
 
         return result.Match(Results.Ok,
             err => err switch

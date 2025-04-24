@@ -2,10 +2,9 @@ using LanguageExt;
 using Modules.BankAccounts.Core.Dtos;
 using Modules.Shared.Results;
 
-namespace Modules.BankAccounts.Core.Dependencies;
+namespace Modules.BankAccounts.Core;
 
-public interface IBankAccountsReader
+public interface IBankAccountBalanceChecker
 {
-    Task<BankAccountListDto> Read(Guid userId);
     Task<Either<ErrorResult, BankAccountBalanceCheckedDto>> CheckBalance(BankAccountBalanceCheckDto checkDto);
 }

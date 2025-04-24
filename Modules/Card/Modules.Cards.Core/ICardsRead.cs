@@ -6,5 +6,5 @@ namespace Modules.Cards.Core;
 
 public interface ICardsRead
 {
-    Task<Either<ErrorResult, CardListDto>> Read();
+    Task<Either<ErrorResult, CardListDto>> Read(Guid bankAccountId);
 }

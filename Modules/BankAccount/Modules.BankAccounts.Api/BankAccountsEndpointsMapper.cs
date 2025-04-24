@@ -11,11 +11,15 @@ public class BankAccountsEndpointsMapper : IEndpointMapper
 {
     public IEndpointRouteBuilder MapEndpoints(IEndpointRouteBuilder endpoints)
     {
-        var cardsEndpoints = endpoints.MapGroup("bank-accounts").WithTags("Bank Accounts").RequireAuthorization();
+        var bankAccountEndpoints = endpoints.MapGroup("bank-accounts").WithTags("Bank Accounts").RequireAuthorization();
 
-        cardsEndpoints.MapGet("", BankAccountsHandler.GetBankAccounts)
+        bankAccountEndpoints.MapGet("", BankAccountsHandler.GetBankAccounts)
             .Produces<BankAccountListDto>();
 
-        return cardsEndpoints;
+        bankAccountEndpoints.MapGet("{bankAccountId:guid}/transactions", TransactionsHandler.GetTransactions)
+            .Produces<TransactionListDto>();
+
+
+        return bankAccountEndpoints;
     }
 }

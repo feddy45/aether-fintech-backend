@@ -7,11 +7,11 @@ namespace Modules.Cards.Core.Concretes;
 
 internal class CardsRead(ICardsReader cardsReader) : ICardsRead
 {
-    public async Task<Either<ErrorResult, CardListDto>> Read()
+    public async Task<Either<ErrorResult, CardListDto>> Read(Guid bankAccountId)
     {
         try
         {
-            return await cardsReader.Read();
+            return await cardsReader.Read(bankAccountId);
         }
         catch (Exception e)
         {

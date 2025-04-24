@@ -19,7 +19,7 @@ internal class TransfersReader(TransfersDbContext dbContext) : ITransfersReader
                 transfer.Amount,
                 transfer.Date,
                 transfer.Description,
-                transfer.CardId
+                transfer.BankAccountId
             ))
             .ToListAsync();
 

@@ -1,4 +1,4 @@
-namespace Modules.Cards.DataAccess.Entities;
+namespace Modules.BankAccount.DataAccess.Entities;
 
 public record TransactionEntity
 {
@@ -7,6 +7,6 @@ public record TransactionEntity
     public string? Description { get; init; }
     public required string Type { get; init; }
     public decimal Amount { get; init; }
-    public Guid CardId { get; init; }
-    public required CardEntity Card { get; init; }
+    public Guid BankAccountId { get; init; }
+    public required BankAccountEntity BankAccount { get; init; }
 }

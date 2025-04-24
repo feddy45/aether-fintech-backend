@@ -19,7 +19,5 @@ public class CardsDataAccessDependencyRegistration : IModuleDependencyRegistrati
         );
 
         services.AddScoped<ICardsReader, CardsReader>();
-        services.AddScoped<ITransactionsReader, TransactionsReader>();
-        services.AddScoped<ITransactionWriter, TransactionWriter>();
     }
 }

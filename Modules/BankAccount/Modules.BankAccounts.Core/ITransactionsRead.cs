@@ -1,8 +1,8 @@
 ﻿using LanguageExt;
-using Modules.Cards.Core.Dtos;
+using Modules.BankAccounts.Core.Dtos;
 using Modules.Shared.Results;
 
-namespace Modules.Cards.Core;
+namespace Modules.BankAccounts.Core;
 
 public interface ITransactionsRead
 {

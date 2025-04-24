@@ -1,17 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Modules.Cards.Core.Dependencies;
-using Modules.Cards.Core.Dtos;
-using Modules.Cards.DataAccess.DatabaseModels;
+using Modules.BankAccount.DataAccess.DatabaseModels;
+using Modules.BankAccounts.Core.Dependencies;
+using Modules.BankAccounts.Core.Dtos;
 
-namespace Modules.Cards.DataAccess;
+namespace Modules.BankAccount.DataAccess;
 
-internal class TransactionsReader(CardsDbContext dbContext) : ITransactionsReader
+internal class TransactionsReader(BankAccountsDbContext dbContext) : ITransactionsReader
 {
-    public Task<TransactionListDto> Read(Guid cardId)
+    public Task<TransactionListDto> Read(Guid bankAccountId)
     {
         var transactions = dbContext.Transaction
             .AsNoTracking()
-            .Where(transaction => transaction.CardId == cardId)
+            .Where(transaction => transaction.BankAccountId == bankAccountId)
             .OrderByDescending(t => t.Date)
             .Select(transaction => new TransactionDto(
                 transaction.Id,
@@ -19,7 +19,7 @@ internal class TransactionsReader(CardsDbContext dbContext) : ITransactionsReade
                 transaction.Date,
                 transaction.Description ?? string.Empty,
                 transaction.Type,
-                transaction.CardId
+                transaction.BankAccountId
             ))
             .ToList();
 

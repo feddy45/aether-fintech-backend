@@ -16,9 +16,6 @@ public class CardsEndpointsMapper : IEndpointMapper
         cardsEndpoints.MapGet("", CardsHandler.GetCards)
             .Produces<CardListDto>();
 
-        cardsEndpoints.MapGet("{cardId:guid}/transactions", TransactionsHandler.GetTransactions)
-            .Produces<TransactionListDto>();
-
         return cardsEndpoints;
     }
 }
