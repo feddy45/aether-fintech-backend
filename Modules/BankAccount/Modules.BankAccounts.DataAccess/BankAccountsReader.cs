@@ -11,6 +11,8 @@ internal class BankAccountsReader(BankAccountsDbContext dbContext) : IBankAccoun
 {
     public async Task<BankAccountListDto> Read(Guid userId)
     {
+        var bankAccountBalances = await GetBankAccountsBalance();
+        
         var bankAccounts = await dbContext.BankAccount
             .AsNoTracking().Where(x => x.UserId == userId)
             .Select(bankAccount => new BankAccountDto(
@@ -18,6 +20,7 @@ internal class BankAccountsReader(BankAccountsDbContext dbContext) : IBankAccoun
                 bankAccount.Iban,
                 bankAccount.Name,
                 bankAccount.UserId,
+                bankAccountBalances.GetValueOrDefault(bankAccount.Id, 0),
                 bankAccount.CreatedAt
             ))
             .ToListAsync();

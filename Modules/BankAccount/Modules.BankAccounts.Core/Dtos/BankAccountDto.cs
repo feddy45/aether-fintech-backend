@@ -5,4 +5,5 @@ public record BankAccountDto(
     string Iban,
     string Name,
     Guid UserId,
+    decimal Balance,
     DateTime CreatedAt);
