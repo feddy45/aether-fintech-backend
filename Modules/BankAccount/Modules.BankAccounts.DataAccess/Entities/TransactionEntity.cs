@@ -8,5 +8,6 @@ public record TransactionEntity
     public required string Type { get; init; }
     public decimal Amount { get; init; }
     public Guid BankAccountId { get; init; }
+    public Guid? CardId { get; init; }
     public required BankAccountEntity BankAccount { get; init; }
 }

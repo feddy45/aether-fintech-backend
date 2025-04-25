@@ -31,6 +31,7 @@ public class BankAccountsDbContext(DbContextOptions<BankAccountsDbContext> optio
             entity.Property(e => e.Type).HasColumnName("type");
             entity.Property(e => e.Amount).HasColumnName("amount");
             entity.Property(e => e.BankAccountId).HasColumnName("bankaccountid");
+            entity.Property(e => e.CardId).HasColumnName("cardid");
         });
     }
 }

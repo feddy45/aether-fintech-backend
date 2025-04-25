@@ -8,9 +8,9 @@ namespace Modules.BankAccounts.Api.Handlers;
 internal static class TransactionsHandler
 {
     public static async Task<IResult> GetTransactions([FromServices] ITransactionsRead transactionsRead,
-        [FromRoute] Guid bankAccountId)
+        [FromRoute] Guid bankAccountId, [FromQuery] Guid? cardId)
     {
-        var result = await transactionsRead.Read(bankAccountId);
+        var result = await transactionsRead.Read(bankAccountId, cardId);
 
         return result.Match(Results.Ok,
             err => err switch

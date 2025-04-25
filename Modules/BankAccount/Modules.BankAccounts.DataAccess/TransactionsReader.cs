@@ -7,21 +7,24 @@ namespace Modules.BankAccount.DataAccess;
 
 internal class TransactionsReader(BankAccountsDbContext dbContext) : ITransactionsReader
 {
-    public Task<TransactionListDto> Read(Guid bankAccountId)
+    public Task<TransactionListDto> Read(Guid bankAccountId, Guid? cardId)
     {
-        var transactions = dbContext.Transaction
+        var transactionsQuery = dbContext.Transaction
             .AsNoTracking()
-            .Where(transaction => transaction.BankAccountId == bankAccountId)
-            .OrderByDescending(t => t.Date)
+            .Where(transaction => transaction.BankAccountId == bankAccountId);
+
+        if (cardId != null) transactionsQuery = transactionsQuery.Where(transaction => transaction.CardId == cardId);
+
+        var transactions = transactionsQuery.OrderByDescending(t => t.Date)
             .Select(transaction => new TransactionDto(
                 transaction.Id,
                 transaction.Amount,
                 transaction.Date,
                 transaction.Description ?? string.Empty,
                 transaction.Type,
-                transaction.BankAccountId
-            ))
-            .ToList();
+                transaction.BankAccountId,
+                transaction.CardId
+            )).ToList();
 
         return Task.FromResult(new TransactionListDto(transactions));
     }
