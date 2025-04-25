@@ -8,21 +8,21 @@ using Modules.Transfers.Core.Dtos;
 
 namespace Modules.Mediator.Api.Handlers;
 
-internal static class MediatorTransfersHandler
+internal static class MediatorBankTransferHandler
 {
-    public static async Task<IResult> CreateTransfer(
+    public static async Task<IResult> CreateBankTransfer(
         [FromServices] ITransferWrite transferWrite,
         [FromServices] IBankAccountBalanceChecker bankAccountBalanceChecker,
         [FromServices] ITransactionWrite transactionWrite,
-        [FromBody] CreateTransferDto request)
+        [FromBody] CreateBankTransferDto request)
     {
         var balanceResult = await bankAccountBalanceChecker.CheckBalance(
-            new BankAccountBalanceCheckDto(request.CardId, request.Amount)
+            new BankAccountBalanceCheckDto(request.BankAccountId, request.Amount)
         );
 
         return await balanceResult.MatchAsync(
-            async cardBalanceCheck => await ManageCheckResultAsync(
-                cardBalanceCheck, request, transactionWrite, transferWrite),
+            async accountBalanceCheck => await ManageBankTransferCheckResult(
+                accountBalanceCheck, request, transactionWrite, transferWrite),
             err => Task.FromResult(err switch
             {
                 GenericErrorResult error => Results.BadRequest(error.Message),
@@ -30,9 +30,9 @@ internal static class MediatorTransfersHandler
             }));
     }
 
-    private static async Task<IResult> ManageCheckResultAsync(
+    private static async Task<IResult> ManageBankTransferCheckResult(
         BankAccountBalanceCheckedDto accountChecked,
-        CreateTransferDto request,
+        CreateBankTransferDto request,
         ITransactionWrite transactionWrite,
         ITransferWrite transferWrite)
     {
@@ -44,7 +44,7 @@ internal static class MediatorTransfersHandler
             DateTime.UtcNow,
             request.Description,
             "transfer",
-            request.CardId
+            request.BankAccountId
         ));
 
         return await transactionResult.MatchAsync(
@@ -53,7 +53,16 @@ internal static class MediatorTransfersHandler
                 if (transaction == null)
                     return Results.BadRequest("Errore nella creazione della transazione");
 
-                var result = await transferWrite.Write(request);
+                var createTransferDto = new CreateTransferDto(
+                    request.Iban,
+                    request.Beneficiary,
+                    request.Amount,
+                    request.Description,
+                    request.BankAccountId,
+                    transaction.Id
+                );
+
+                var result = await transferWrite.Write(createTransferDto);
                 return result.Match<IResult>(
                     _ => Results.Ok(),
                     err => err switch

@@ -20,6 +20,7 @@ public class TransfersDbContext(DbContextOptions<TransfersDbContext> options) : 
             entity.Property(e => e.Description).HasColumnName("description");
             entity.Property(e => e.Amount).HasColumnName("amount");
             entity.Property(e => e.BankAccountId).HasColumnName("bankaccountid");
+            entity.Property(e => e.TransactionId).HasColumnName("transactionid");
         });
     }
 }

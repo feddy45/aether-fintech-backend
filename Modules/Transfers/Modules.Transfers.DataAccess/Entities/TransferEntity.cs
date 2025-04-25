@@ -9,4 +9,5 @@ public record TransferEntity
     public decimal Amount { get; init; }
     public required string Description { get; init; }
     public Guid BankAccountId { get; init; }
+    public Guid TransactionId { get; init; }
 }

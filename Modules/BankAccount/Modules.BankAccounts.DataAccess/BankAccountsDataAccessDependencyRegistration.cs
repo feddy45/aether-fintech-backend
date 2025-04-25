@@ -19,6 +19,7 @@ public class BankAccountsDataAccessDependencyRegistration : IModuleDependencyReg
         );
 
         services.AddScoped<IBankAccountsReader, BankAccountsReader>();
+        services.AddScoped<IBankAccountReader, BankAccountReader>();
         services.AddScoped<ITransactionsReader, TransactionsReader>();
         services.AddScoped<ITransactionWriter, TransactionWriter>();
     }

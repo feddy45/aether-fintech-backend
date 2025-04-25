@@ -16,7 +16,8 @@ internal class TransferWriter(TransfersDbContext dbContext) : ITransferWriter
             Amount = request.Amount,
             Date = DateTime.UtcNow,
             Description = request.Description,
-            BankAccountId = request.CardId
+            BankAccountId = request.BankAccountId,
+            TransactionId = request.TransactionId
         };
 
         dbContext.Add(newTransfer);

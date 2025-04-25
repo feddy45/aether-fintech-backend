@@ -1,9 +1,7 @@
-﻿using LanguageExt;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Modules.BankAccount.DataAccess.DatabaseModels;
 using Modules.BankAccounts.Core.Dependencies;
 using Modules.BankAccounts.Core.Dtos;
-using Modules.Shared.Results;
 
 namespace Modules.BankAccount.DataAccess;
 
@@ -12,7 +10,7 @@ internal class BankAccountsReader(BankAccountsDbContext dbContext) : IBankAccoun
     public async Task<BankAccountListDto> Read(Guid userId)
     {
         var bankAccountBalances = await GetBankAccountsBalance();
-        
+
         var bankAccounts = await dbContext.BankAccount
             .AsNoTracking().Where(x => x.UserId == userId)
             .Select(bankAccount => new BankAccountDto(
@@ -28,16 +26,7 @@ internal class BankAccountsReader(BankAccountsDbContext dbContext) : IBankAccoun
         return new BankAccountListDto(bankAccounts);
     }
 
-    public async Task<Either<ErrorResult, BankAccountBalanceCheckedDto>> CheckBalance(
-        BankAccountBalanceCheckDto checkDto)
-    {
-        var bankAccountsBalances = await GetBankAccountsBalance();
-
-        return new BankAccountBalanceCheckedDto(bankAccountsBalances.GetValueOrDefault(checkDto.BankAccountId, 0) >=
-                                                checkDto.Cost);
-    }
-
-    private async Task<Dictionary<Guid, decimal>> GetBankAccountsBalance()
+    public async Task<Dictionary<Guid, decimal>> GetBankAccountsBalance()
     {
         return await dbContext.Transaction
             .AsNoTracking()

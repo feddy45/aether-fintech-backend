@@ -5,14 +5,13 @@ using Modules.Shared.Results;
 
 namespace Modules.BankAccounts.Core.Concretes;
 
-internal class BankAccountBalanceChecker(IBankAccountReader bankAccountReader) : IBankAccountBalanceChecker
+internal class BankAccountRead(IBankAccountReader accountReader) : IBankAccountRead
 {
-    public async Task<Either<ErrorResult, BankAccountBalanceCheckedDto>> CheckBalance(
-        BankAccountBalanceCheckDto checkDto)
+    public async Task<Either<ErrorResult, BankAccountDto>> Read(Guid bankAccountId)
     {
         try
         {
-            return await bankAccountReader.CheckBalance(checkDto);
+            return await accountReader.Read(bankAccountId);
         }
         catch (Exception e)
         {

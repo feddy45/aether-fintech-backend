@@ -9,6 +9,7 @@ public class BankAccountsCoreDependencyRegistration : IModuleDependencyRegistrat
     public void Execute(IServiceCollection services)
     {
         services.AddScoped<IBankAccountsRead, BankAccountsRead>();
+        services.AddScoped<IBankAccountRead, BankAccountRead>();
         services.AddScoped<ITransactionsRead, TransactionsRead>();
         services.AddScoped<ITransactionWrite, TransactionWrite>();
         services.AddScoped<IBankAccountBalanceChecker, BankAccountBalanceChecker>();

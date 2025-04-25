@@ -13,7 +13,10 @@ public class MediatorEndpointsMapper : IEndpointMapper
     {
         var transfersEndpoints = endpoints.MapGroup("transfers").WithTags("Transfers").RequireAuthorization();
 
-        transfersEndpoints.MapPost("", MediatorTransfersHandler.CreateTransfer)
+        transfersEndpoints.MapPost("bank-transfer", MediatorBankTransferHandler.CreateBankTransfer)
+            .Produces<CreatedTransferDto>();
+
+        transfersEndpoints.MapPost("internal-transfer", MediatorInternalTransferHandler.CreateInternalTransfer)
             .Produces<CreatedTransferDto>();
 
         return transfersEndpoints;
