@@ -17,6 +17,9 @@ internal static class MediatorInternalTransferHandler
         [FromServices] IBankAccountRead bankAccountRead,
         [FromBody] CreateInternalTransferDto request)
     {
+        if (request.OriginBankAccountId == request.DestinationBankAccountId)
+            return Results.BadRequest("Origin and destination bank accounts must be different");
+
         var balanceResult = await bankAccountBalanceChecker.CheckBalance(
             new BankAccountBalanceCheckDto(request.OriginBankAccountId, request.Amount)
         );
