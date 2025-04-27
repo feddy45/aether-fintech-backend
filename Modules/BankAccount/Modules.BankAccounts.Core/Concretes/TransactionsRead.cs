@@ -7,11 +7,11 @@ namespace Modules.BankAccounts.Core.Concretes;
 
 internal class TransactionsRead(ITransactionsReader transactionsReader) : ITransactionsRead
 {
-    public async Task<Either<ErrorResult, TransactionListDto>> Read(Guid bankAccountId, Guid? cardId)
+    public async Task<Either<ErrorResult, TransactionListDto>> Read(Guid bankAccountId, List<Guid> cards)
     {
         try
         {
-            return await transactionsReader.Read(bankAccountId, cardId);
+            return await transactionsReader.Read(bankAccountId, cards);
         }
         catch (Exception e)
         {

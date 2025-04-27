@@ -6,5 +6,5 @@ namespace Modules.BankAccounts.Core;
 
 public interface ITransactionsRead
 {
-    Task<Either<ErrorResult, TransactionListDto>> Read(Guid bankAccountId, Guid? cardId);
+    Task<Either<ErrorResult, TransactionListDto>> Read(Guid bankAccountId, List<Guid> cards);
 }

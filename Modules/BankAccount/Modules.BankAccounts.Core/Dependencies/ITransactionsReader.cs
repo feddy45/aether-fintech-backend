@@ -4,5 +4,5 @@ namespace Modules.BankAccounts.Core.Dependencies;
 
 public interface ITransactionsReader
 {
-    Task<TransactionListDto> Read(Guid bankAccountId, Guid? cardId);
+    Task<TransactionListDto> Read(Guid bankAccountId, List<Guid> cards);
 }
