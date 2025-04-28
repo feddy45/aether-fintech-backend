@@ -34,7 +34,7 @@ internal class BankAccountsReader(BankAccountsDbContext dbContext) : IBankAccoun
             .Select(g => new
             {
                 CardId = g.Key,
-                Amount = g.Sum(t => t.Amount)
+                Amount = g.Sum(t => t.Type == "income" ? t.Amount : -t.Amount)
             })
             .ToDictionaryAsync(x => x.CardId, x => x.Amount);
     }
