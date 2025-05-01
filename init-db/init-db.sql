@@ -68,6 +68,14 @@ BEGIN
         'federico.ghezzo95@gmail.com',
             'Federico',
             'Ghezzo'
+        ),(
+            '9f9746d9-f3c4-4b84-8b01-58cd81d2f0df', 
+           'giulia.rossi', 
+           'password-hash-placeholder', 
+           '1990-05-15', 
+           'giulia.rossi@example.com', 
+           'Giulia', 
+           'Rossi'
         );
     END IF;
     
@@ -94,6 +102,13 @@ BEGIN
                 'Conto Spese',
                 '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df',
                 now()
+            ),
+            (
+                '132ac447-995e-4c0a-860d-a5a317b9f7c6',
+                'IT60X0542811101000000123464',
+                'Conto Principale Giulia', 
+                '9f9746d9-f3c4-4b84-8b01-58cd81d2f0df', 
+                now()
             );
     END IF;
 
@@ -105,7 +120,8 @@ BEGIN
              ('c39af9fe-604c-4354-b3cb-8f982e9d6007', '5500000000000004', 'MasterCard Gold', '2028-11-30',  'd51e3ef7-e035-4667-8df8-9f84b35b14bb'),
              ('c5a8d57a-cd34-43cd-b199-6ac1e05a631a', '340000000000009', 'American Express', '2026-10-31',  '3fa85f64-5717-4562-b3fc-2c963f66afa1'),
              ('1c6cb34f-83a4-471f-8dc7-65505e0acfe4', '6011000000000004', 'Discover', '2027-09-30',  '7abf14c1-e8f0-4bd7-b9b2-c765dee8f18a'),
-             ('20694efb-1182-4414-9885-e9e92eaf4d32', '4111111111111112', 'Visa Classic', '2027-06-18',  'd51e3ef7-e035-4667-8df8-9f84b35b14bb');
+             ('20694efb-1182-4414-9885-e9e92eaf4d32', '4111111111111112', 'Visa Classic', '2027-06-18',  'd51e3ef7-e035-4667-8df8-9f84b35b14bb'),
+             ('0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '1234 5678 9876 5432', 'Carta di Giulia', '2027-12-31', '132ac447-995e-4c0a-860d-a5a317b9f7c6');
     END IF;
 
 
@@ -361,7 +377,78 @@ BEGIN
             ('bb33f8eb-5221-4d5d-a74b-a910ecc2d102', '2024-11-22 00:00:00', 'Pagamento Freelance', 'income', 779.85, '20694efb-1182-4414-9885-e9e92eaf4d32', 'd51e3ef7-e035-4667-8df8-9f84b35b14bb'),
             ('74327cab-60b2-42c7-918b-49ae4b3038fe', '2024-06-12 00:00:00', 'Spesa', 'expense', 58.55, '20694efb-1182-4414-9885-e9e92eaf4d32', 'd51e3ef7-e035-4667-8df8-9f84b35b14bb'),
             ('029c4aa6-d49f-42f6-82d7-b110d38a4169', '2025-03-24 00:00:00', 'Abbonamento Palestra', 'expense', 46.75, '20694efb-1182-4414-9885-e9e92eaf4d32', 'd51e3ef7-e035-4667-8df8-9f84b35b14bb'),
-            ('a25ed7e9-321c-4293-89c4-fc097848d15c', '2024-07-14 00:00:00', 'Stipendio', 'income', 1776.68, '20694efb-1182-4414-9885-e9e92eaf4d32', 'd51e3ef7-e035-4667-8df8-9f84b35b14bb');
+            ('a25ed7e9-321c-4293-89c4-fc097848d15c', '2024-07-14 00:00:00', 'Stipendio', 'income', 1776.68, '20694efb-1182-4414-9885-e9e92eaf4d32', 'd51e3ef7-e035-4667-8df8-9f84b35b14bb'),
+            ('68e52d63-ea32-4a9b-879c-182999eaef25', '2024-01-01', 'Bonifico da genitori', 'income', 140.24, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('3c1ae258-bf5d-4dc3-bb66-5f89499b2bdc', '2024-01-02', 'Biglietti treno', 'expense', 47.62, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('fed5e01c-ac9d-40dc-9779-de8fc35f7622', '2024-01-03', 'Vendita su marketplace', 'income', 467.85, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('5bf286b5-33fc-4fdf-b95e-1c05cfb2de52', '2024-01-04', 'Abbonamento palestra', 'expense', 106.49, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('78cdb879-c2cb-439b-a983-ace6c1235672', '2024-01-05', 'Stipendio', 'income', 1431.35, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('d1ff48ee-68ed-4087-8130-4fc59252e69a', '2024-01-06', 'Biglietti treno', 'expense', 275.84, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('2b348683-a954-44ae-96fd-b0dcb3ddd56a', '2024-01-07', 'Bonus produzione', 'income', 602.69, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('88a294eb-3911-4ee2-be16-4f623760f9ca', '2024-01-08', 'Rifornimento benzina', 'expense', 225.57, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('11eab9f3-5c80-42bc-a27e-69abbc246e4f', '2024-01-09', 'Rendita', 'income', 621.71, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('62b9867e-7ff8-4e16-b8bf-b0e7e3bab2c0', '2024-01-10', 'Pagamento bollette', 'expense', 38.14, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('06172d21-c196-44c9-b184-d63d46e627df', '2024-01-11', 'Rendita', 'income', 1433.33, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('9040a933-5847-4f75-b7f9-77315d045044', '2024-01-12', 'Cena fuori', 'expense', 101.75, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('1d16c2b2-3f3e-4272-8d80-61e94bcb7e27', '2024-01-13', 'Stipendio', 'income', 777.98, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('6e7a39d1-a7e8-47cc-b4b3-c41c05a7183e', '2024-01-14', 'Cena fuori', 'expense', 173.62, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('c9251864-ed0d-4b44-92d0-c31ed766c478', '2024-01-15', 'Rimborso spese', 'income', 1115.44, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('72f547fa-1e67-402f-954e-9665a7d25750', '2024-01-16', 'Pagamento bollette', 'expense', 18.06, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('27ff5875-31c3-46ac-8fed-ba04eca94d48', '2024-01-17', 'Bonifico da genitori', 'income', 1192.06, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('ebe43001-ff0d-4c25-88d4-fc6546bd107a', '2024-01-18', 'Spesa supermercato', 'expense', 258.51, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('4eda6c1d-ed58-4e60-a365-c164eab0464c', '2024-01-19', 'Rimborso spese', 'income', 1303.89, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('f26029c4-af15-4868-9794-43447be8f6b9', '2024-01-20', 'Shopping online', 'expense', 99.95, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('0a0c32cf-b9e3-4b54-9ce4-26e983b6335d', '2024-01-21', 'Bonus produzione', 'income', 834.62, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('562218b8-12ce-4994-aac5-ab245bce1066', '2024-01-22', 'Rifornimento benzina', 'expense', 163.81, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('8bc45e14-444c-456f-81e7-552077005ccf', '2024-01-23', 'Rendita', 'income', 1245.49, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('0ff530ab-1660-42e6-8f4f-f84578570fc3', '2024-01-24', 'Pagamento bollette', 'expense', 71.54, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('783848fb-472e-44df-9c93-b4d37258522e', '2024-01-25', 'Rendita', 'income', 1091.11, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('7f8c9236-ab3b-41b5-8e81-4014b07ed01d', '2024-01-26', 'Rifornimento benzina', 'expense', 63.83, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('52248425-c8f5-4670-9325-b14895073dc4', '2024-01-27', 'Bonifico da genitori', 'income', 1052.67, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('f5538897-b3cb-4b61-a89b-cf755b8a2eb7', '2024-01-28', 'Abbonamento palestra', 'expense', 73.98, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('838c22a3-655f-4446-875a-c3b21a1d8510', '2024-01-29', 'Rimborso spese', 'income', 1106.85, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('7e7d4d55-eb0f-4ecf-aa4b-649e9e42975e', '2024-01-30', 'Rifornimento benzina', 'expense', 282.9, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('ba57a8fb-c47a-4396-bfb9-ae7b16e78fd2', '2024-01-31', 'Stipendio', 'income', 994.42, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('30126c6f-6bf7-474f-932d-9c3029e350b5', '2024-02-01', 'Biglietti treno', 'expense', 19.35, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('2fb87794-c52b-4fa2-934f-7ab65c544989', '2024-02-02', 'Bonus produzione', 'income', 1256.11, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('18e3f489-32ba-46b3-9a37-30c1afb5b1db', '2024-02-03', 'Spesa supermercato', 'expense', 212.51, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('c154e44e-be9f-4d1d-ade3-64a7f4342811', '2024-02-04', 'Rimborso spese', 'income', 917.49, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('d065bc00-3f61-4e34-b3c7-0df425e57a38', '2024-02-05', 'Cena fuori', 'expense', 149.4, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('f9f2612f-6107-4e62-9174-0493b30432ed', '2024-02-06', 'Rendita', 'income', 314.55, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('0c19be7e-15eb-46ec-adc1-90948d9e05a3', '2024-02-07', 'Pagamento bollette', 'expense', 175.24, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('53934abd-020f-4f59-a743-a2a14823d3c7', '2024-02-08', 'Bonus produzione', 'income', 351.12, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('b1bf0337-bb93-4b96-97ad-c1a69d789cb0', '2024-02-09', 'Cena fuori', 'expense', 296.14, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('ac2fa692-ffe8-4300-8cd9-e9fb2d960a4d', '2024-02-10', 'Bonus produzione', 'income', 716.86, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('87408a03-7c6a-4622-8bd6-9432c0f4d89a', '2024-02-11', 'Rata auto', 'expense', 61.01, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('4c71dceb-a59f-4f8d-90fd-fc7e1975831c', '2024-02-12', 'Bonus produzione', 'income', 1313.52, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('5d1d7d1e-c034-498c-8e9a-c44ad4252d81', '2024-02-13', 'Pagamento bollette', 'expense', 85.7, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('53082694-749e-4337-86f0-ad43226c73fe', '2024-02-14', 'Bonus produzione', 'income', 1256.42, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('1719707e-a956-4df4-b323-b4eba4206973', '2024-02-15', 'Abbonamento palestra', 'expense', 89.34, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('6ee45cb7-86c0-4969-bcac-65ee92346191', '2024-02-16', 'Bonus produzione', 'income', 487.15, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('86316f98-a6db-406e-952b-c69f01f1c71d', '2024-02-17', 'Shopping online', 'expense', 115.29, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('9a4b4a07-0456-43c8-bbc7-2a908f4b621e', '2024-02-18', 'Rimborso spese', 'income', 866.94, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('29038fbd-d572-4199-a280-761701bcae2c', '2024-02-19', 'Rata auto', 'expense', 20.04, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('ea9dd51f-9bdd-400d-b619-d01bf5ced0d1', '2024-02-20', 'Rendita', 'income', 1478.35, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('e315287a-e40b-47c3-9d56-8abf4449aa9b', '2024-02-21', 'Rifornimento benzina', 'expense', 278.94, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('b99078d0-7096-49d2-abd2-239ec21ca9cd', '2024-02-22', 'Rimborso spese', 'income', 1194.02, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('eb2cdbab-4c3a-4ede-ac71-e9114aaff632', '2024-02-23', 'Pagamento bollette', 'expense', 126.62, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('74fe9be4-315d-487e-8017-34ded375258b', '2024-02-24', 'Rendita', 'income', 1404.51, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('909b6d92-515d-4ba7-8d4c-c2b1520f554f', '2024-02-25', 'Rata auto', 'expense', 16.85, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('27daabb7-6363-43cd-940e-ce1be416c0a9', '2024-02-26', 'Vendita su marketplace', 'income', 1093.74, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('590b7dc8-e005-479b-b715-42256d37fc3e', '2024-02-27', 'Pagamento bollette', 'expense', 156.97, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('c40ac1fc-95b9-4047-bcec-07506f0c84d1', '2024-02-28', 'Rimborso spese', 'income', 1321.47, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('8e626bc6-982f-43b1-8cb1-9a15bf6fdc45', '2024-02-29', 'Shopping online', 'expense', 109.5, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('9a9d52c2-43bd-47e3-be98-6068046eeb36', '2024-03-01', 'Stipendio', 'income', 343.59, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('346a7698-267b-46ff-ad5c-8a41bf6cd636', '2024-03-02', 'Cena fuori', 'expense', 59.15, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('43a02334-9b92-4186-834a-b95ae5af6a25', '2024-03-03', 'Bonus produzione', 'income', 78.25, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('49230cac-47cb-4408-8472-3a1ccef3c4c3', '2024-03-04', 'Rata auto', 'expense', 71.07, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('5578f15e-4d53-4d0b-900d-f3f02a66b6ea', '2024-03-05', 'Stipendio', 'income', 1088.09, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('e5d34f20-83f4-45e4-8c81-3b44d37a96a2', '2024-03-06', 'Cena fuori', 'expense', 280.7, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('2386978c-d052-46a8-a5b5-950a08695199', '2024-03-07', 'Stipendio', 'income', 1154.02, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('63ef1491-afa9-4c57-8592-58b8a2d774a4', '2024-03-08', 'Cena fuori', 'expense', 182.86, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('4ae956f4-3fa4-4ba0-bbd3-4e653653bb81', '2024-03-09', 'Rendita', 'income', 651.64, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('1f21626d-293c-493c-b29e-10a17ea5d493', '2024-03-10', 'Spesa supermercato', 'expense', 91.98, '0ce34f02-fc88-4eed-9063-9b9a13e14fd2', '132ac447-995e-4c0a-860d-a5a317b9f7c6');
+            
 
         INSERT INTO "Transaction"
         (id, date, description, type, amount,  bankaccountid)
@@ -375,7 +462,27 @@ BEGIN
             ('bff07392-42b3-4602-8bba-9fca456ff2dc', '2025-01-09', 'Regalo compleanno',     'transfer', 200.00, 'd51e3ef7-e035-4667-8df8-9f84b35b14bb'),
             ('e26b3530-f3cd-4b0e-83d2-9e9e9e6c4a3e', '2025-02-15', 'RC Auto',               'transfer', 530.25, '3fa85f64-5717-4562-b3fc-2c963f66afa1'),
             ('ec0bcbaf-9c20-41ef-9ec8-8d1a74149e4f', '2025-03-01', 'Tari annuale',          'transfer', 320.00, '7abf14c1-e8f0-4bd7-b9b2-c765dee8f18a'),
-            ('9ae5288f-8f52-4020-8186-19190e3d6c85', '2025-04-01', 'Gas marzo',             'transfer', 140.75, 'd51e3ef7-e035-4667-8df8-9f84b35b14bb');
+            ('9ae5288f-8f52-4020-8186-19190e3d6c85', '2025-04-01', 'Gas marzo',             'transfer', 140.75, 'd51e3ef7-e035-4667-8df8-9f84b35b14bb'),
+            ('ce7b97a0-47ff-4951-a33b-043ba6a6d682', '2024-03-21', 'Bonifico a Sara', 'transfer', 389.87,  '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('9bc89df9-ba5a-4f51-b175-516b0c6dc10f', '2024-03-22', 'Bonifico a Sara', 'transfer', 270.44,  '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('bd405015-94ef-48b6-89fd-c0336c1feffd', '2024-03-23', 'Bonifico a Laura', 'transfer', 324.71,  '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('8396be6e-01d2-4b48-accc-e6fd36d2aadc', '2024-03-24', 'Bonifico a Marco', 'transfer', 458.49,  '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('b2bcd1fd-a710-450e-9d3e-e19be4c2fbc2', '2024-03-25', 'Bonifico a Marco', 'transfer', 214.28,  '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('d9263815-a911-48d1-b651-8e8e819db890', '2024-03-26', 'Bonifico a Sara', 'transfer', 72.51,  '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('816fe38f-7126-4fc4-b34f-207082fd9536', '2024-03-27', 'Bonifico a Marco', 'transfer', 42.13,  '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('5c92ff34-3582-41da-92b7-13158c390b85', '2024-03-28', 'Bonifico a Laura', 'transfer', 172.23,  '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('6fe8faec-e949-4c38-85df-96cc46db5b37', '2024-03-29', 'Bonifico a Paolo', 'transfer', 394.94,  '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('188af5d9-27ef-400a-8258-dec1e78a0f30', '2024-03-30', 'Bonifico a Laura', 'transfer', 211.38,  '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('9a639a9a-3074-4ec1-9a41-59f0eb8d863c', '2024-03-31', 'Bonifico a Paolo', 'transfer', 171.5,  '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('62670e2a-50ed-48bf-bc34-079e595a0f81', '2024-04-01', 'Bonifico a Marco', 'transfer', 140.41,  '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('18b3d857-a9b8-4149-ab5a-b75873a94916', '2024-04-02', 'Bonifico a Laura', 'transfer', 487.95,  '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('11bf362a-bfb8-4454-b421-3a443bd0aa14', '2024-04-03', 'Bonifico a Marco', 'transfer', 294.63,  '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('ce940943-337c-4a29-9d76-d3636e42fb09', '2024-04-04', 'Bonifico a Marco', 'transfer', 21.25,  '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('d9e18dca-a129-4a7a-80da-09372ca526e6', '2024-04-05', 'Bonifico a Sara', 'transfer', 72.03,  '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('7b5930ca-1752-411e-9300-bc07f033d11c', '2024-04-06', 'Bonifico a Sara', 'transfer', 191.36,  '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('8fbcf5ea-87b4-4809-8430-c13ac2130c60', '2024-04-07', 'Bonifico a Sara', 'transfer', 197.61,  '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('b7fea647-5a46-4603-bec5-f581d8961be5', '2024-04-08', 'Bonifico a Paolo', 'transfer', 139.02,  '132ac447-995e-4c0a-860d-a5a317b9f7c6'),
+            ('e93eece2-487d-4a2b-b77d-1828cf165018', '2024-04-09', 'Bonifico a Laura', 'transfer', 89.4,  '132ac447-995e-4c0a-860d-a5a317b9f7c6');
     END IF;
     
     IF NOT EXISTS (SELECT 1 FROM "Transfer") THEN
@@ -391,6 +498,26 @@ BEGIN
             ('bff07392-42b3-4602-8bba-9fca456ff2dc', 'IT32C0200805070000102345678', 'Marco Gialli',        '2025-01-09', 'Regalo compleanno',          200.00, 'd51e3ef7-e035-4667-8df8-9f84b35b14bb', 'bff07392-42b3-4602-8bba-9fca456ff2dc'),
             ('e26b3530-f3cd-4b0e-83d2-9e9e9e6c4a3e', 'IT60X0542811101000000899999', 'Assicurazioni SPA',   '2025-02-15', 'RC Auto',                    530.25, '3fa85f64-5717-4562-b3fc-2c963f66afa1', 'e26b3530-f3cd-4b0e-83d2-9e9e9e6c4a3e'),
             ('ec0bcbaf-9c20-41ef-9ec8-8d1a74149e4f', 'IT60R0300203280000400162999', 'Comune di Milano',    '2025-03-01', 'Tari annuale',               320.00, '7abf14c1-e8f0-4bd7-b9b2-c765dee8f18a', 'ec0bcbaf-9c20-41ef-9ec8-8d1a74149e4f'),
-            ('9ae5288f-8f52-4020-8186-19190e3d6c85', 'IT08D0300203280000400162444', 'Edison S.p.A.',        '2025-04-01', 'Gas marzo',                  140.75, 'd51e3ef7-e035-4667-8df8-9f84b35b14bb', '9ae5288f-8f52-4020-8186-19190e3d6c85');
+            ('9ae5288f-8f52-4020-8186-19190e3d6c85', 'IT08D0300203280000400162444', 'Edison S.p.A.',        '2025-04-01', 'Gas marzo',                  140.75, 'd51e3ef7-e035-4667-8df8-9f84b35b14bb', '9ae5288f-8f52-4020-8186-19190e3d6c85'),
+            ('10a7b183-e76a-4b9d-8b69-d9f81ecc64ea', 'IT60X2111970118531678224560674', 'Sara Gialli', '2024-03-21', 'Bonifico a Sara', 389.87, '132ac447-995e-4c0a-860d-a5a317b9f7c6', 'ce7b97a0-47ff-4951-a33b-043ba6a6d682'),
+            ('b4315dde-0254-4186-a7f1-c205471a4f0a', 'IT60X9614202423275089668055632', 'Sara Gialli', '2024-03-22', 'Bonifico a Sara', 270.44, '132ac447-995e-4c0a-860d-a5a317b9f7c6', '9bc89df9-ba5a-4f51-b175-516b0c6dc10f'),
+            ('0df5084b-c457-4caa-8604-5ef036d84665', 'IT60X4083044135221038377286985', 'Laura Verdi', '2024-03-23', 'Bonifico a Laura', 324.71, '132ac447-995e-4c0a-860d-a5a317b9f7c6', 'bd405015-94ef-48b6-89fd-c0336c1feffd'),
+            ('23ac335c-ab5d-4cfb-b699-62bcb2913a53', 'IT60X8168531401696309525793690', 'Sara Gialli', '2024-03-24', 'Bonifico a Marco', 458.49, '132ac447-995e-4c0a-860d-a5a317b9f7c6', '8396be6e-01d2-4b48-accc-e6fd36d2aadc'),
+            ('d575bfac-6c44-4912-b588-00e1457d64ff', 'IT60X1485808763170209228257996', 'Sara Gialli', '2024-03-25', 'Bonifico a Marco', 214.28, '132ac447-995e-4c0a-860d-a5a317b9f7c6', 'b2bcd1fd-a710-450e-9d3e-e19be4c2fbc2'),
+            ('fe5afe95-6502-4cf0-a12f-a0853dc5f3c5', 'IT60X8487843065638547220875833', 'Marco Bianchi', '2024-03-26', 'Bonifico a Sara', 72.51, '132ac447-995e-4c0a-860d-a5a317b9f7c6', 'd9263815-a911-48d1-b651-8e8e819db890'),
+            ('da22c7d7-2b29-4ae2-ba23-54af0d5270cc', 'IT60X1108088020233728519124426', 'Sara Gialli', '2024-03-27', 'Bonifico a Marco', 42.13, '132ac447-995e-4c0a-860d-a5a317b9f7c6', '816fe38f-7126-4fc4-b34f-207082fd9536'),
+            ('0ba7f932-6f3d-4848-bdee-facbbfcf5515', 'IT60X8374395144450078111986674', 'Sara Gialli', '2024-03-28', 'Bonifico a Laura', 172.23, '132ac447-995e-4c0a-860d-a5a317b9f7c6', '5c92ff34-3582-41da-92b7-13158c390b85'),
+            ('e606d41b-8590-407c-85ff-df3d0121e543', 'IT60X6157564065346702684065569', 'Laura Verdi', '2024-03-29', 'Bonifico a Paolo', 394.94, '132ac447-995e-4c0a-860d-a5a317b9f7c6', '6fe8faec-e949-4c38-85df-96cc46db5b37'),
+            ('69156525-83b1-4413-99ab-26296344baf2', 'IT60X4989480607669159931366077', 'Laura Verdi', '2024-03-30', 'Bonifico a Laura', 211.38, '132ac447-995e-4c0a-860d-a5a317b9f7c6', '188af5d9-27ef-400a-8258-dec1e78a0f30'),
+            ('51ed8838-aa02-4b8c-9483-88c2ca6a3152', 'IT60X2041870945030587766452840', 'Laura Verdi', '2024-03-31', 'Bonifico a Paolo', 171.5, '132ac447-995e-4c0a-860d-a5a317b9f7c6', '9a639a9a-3074-4ec1-9a41-59f0eb8d863c'),
+            ('bfb881af-cc25-429d-a221-d37ba90702bf', 'IT60X1233229226613664340826357', 'Laura Verdi', '2024-04-01', 'Bonifico a Marco', 140.41, '132ac447-995e-4c0a-860d-a5a317b9f7c6', '62670e2a-50ed-48bf-bc34-079e595a0f81'),
+            ('9578e08f-6b6a-40f8-96f6-352b5a9229f9', 'IT60X3079864519778211400721189', 'Paolo Neri', '2024-04-02', 'Bonifico a Laura', 487.95, '132ac447-995e-4c0a-860d-a5a317b9f7c6', '18b3d857-a9b8-4149-ab5a-b75873a94916'),
+            ('ba7d1067-4d86-4717-a746-d84a19e2fc07', 'IT60X5009958280912717844950898', 'Marco Bianchi', '2024-04-03', 'Bonifico a Marco', 294.63, '132ac447-995e-4c0a-860d-a5a317b9f7c6', '11bf362a-bfb8-4454-b421-3a443bd0aa14'),
+            ('ba294072-9e26-4e15-a01b-58f228e67a1c', 'IT60X9548261848531096811569970', 'Marco Bianchi', '2024-04-04', 'Bonifico a Marco', 21.25, '132ac447-995e-4c0a-860d-a5a317b9f7c6', 'ce940943-337c-4a29-9d76-d3636e42fb09'),
+            ('c7c3b7f8-8a6e-4fdc-90bd-0d94b1a92a93', 'IT60X5880519109739131264974976', 'Sara Gialli', '2024-04-05', 'Bonifico a Sara', 72.03, '132ac447-995e-4c0a-860d-a5a317b9f7c6', 'd9e18dca-a129-4a7a-80da-09372ca526e6'),
+            ('7c35802b-d958-471a-8835-f5539dcd5fc6', 'IT60X5637936658060111315568849', 'Laura Verdi', '2024-04-06', 'Bonifico a Sara', 191.36, '132ac447-995e-4c0a-860d-a5a317b9f7c6', '7b5930ca-1752-411e-9300-bc07f033d11c'),
+            ('fc6c1987-b952-484b-8683-6b5f2a6983f6', 'IT60X1237159099827718540941123', 'Paolo Neri', '2024-04-07', 'Bonifico a Sara', 197.61, '132ac447-995e-4c0a-860d-a5a317b9f7c6', '8fbcf5ea-87b4-4809-8430-c13ac2130c60'),
+            ('82ac563d-ba3a-444b-98e4-dc966ffbbe36', 'IT60X2039850945606725723211234', 'Sara Gialli', '2024-04-08', 'Bonifico a Paolo', 139.02, '132ac447-995e-4c0a-860d-a5a317b9f7c6', 'b7fea647-5a46-4603-bec5-f581d8961be5'),
+            ('b6948eac-5531-42c9-8b55-da97195b8ce5', 'IT60X9120774920712067779995425', 'Sara Gialli', '2024-04-09', 'Bonifico a Laura', 89.4, '132ac447-995e-4c0a-860d-a5a317b9f7c6', 'e93eece2-487d-4a2b-b77d-1828cf165018');
     END IF;
 END $$;
