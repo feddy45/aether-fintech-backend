@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Modules.BankAccount.DataAccess.Entities;
+using Modules.BankAccounts.Core.Enums;
 
 namespace Modules.BankAccount.DataAccess.DatabaseModels;
 
@@ -10,6 +12,11 @@ public class BankAccountsDbContext(DbContextOptions<BankAccountsDbContext> optio
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        var transactionTypeConverter = new ValueConverter<TransactionType, string>(
+            v => v.ToString().ToLowerInvariant(),
+            v => (TransactionType)Enum.Parse(typeof(TransactionType), v, true)
+        );
+
         modelBuilder.Entity<BankAccountEntity>(entity =>
         {
             entity.ToTable("BankAccount");
@@ -28,7 +35,7 @@ public class BankAccountsDbContext(DbContextOptions<BankAccountsDbContext> optio
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Date).HasColumnName("date");
             entity.Property(e => e.Description).HasColumnName("description");
-            entity.Property(e => e.Type).HasColumnName("type");
+            entity.Property(e => e.Type).HasColumnName("type").HasConversion(transactionTypeConverter);
             entity.Property(e => e.Amount).HasColumnName("amount");
             entity.Property(e => e.BankAccountId).HasColumnName("bankaccountid");
             entity.Property(e => e.CardId).HasColumnName("cardid");

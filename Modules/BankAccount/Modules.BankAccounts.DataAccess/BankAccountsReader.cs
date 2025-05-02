@@ -2,6 +2,7 @@
 using Modules.BankAccount.DataAccess.DatabaseModels;
 using Modules.BankAccounts.Core.Dependencies;
 using Modules.BankAccounts.Core.Dtos;
+using Modules.BankAccounts.Core.Enums;
 
 namespace Modules.BankAccount.DataAccess;
 
@@ -34,7 +35,7 @@ internal class BankAccountsReader(BankAccountsDbContext dbContext) : IBankAccoun
             .Select(g => new
             {
                 CardId = g.Key,
-                Amount = g.Sum(t => t.Type == "income" ? t.Amount : -t.Amount)
+                Amount = g.Sum(t => t.Type == TransactionType.Income ? t.Amount : -t.Amount)
             })
             .ToDictionaryAsync(x => x.CardId, x => x.Amount);
     }

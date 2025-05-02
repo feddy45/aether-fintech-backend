@@ -1,3 +1,5 @@
+using Modules.BankAccounts.Core.Enums;
+
 namespace Modules.BankAccounts.Core.Dtos;
 
 public record TransactionDto(
@@ -5,6 +7,6 @@ public record TransactionDto(
     decimal Amount,
     DateTime Date,
     string Description,
-    string Type,
+    TransactionType Type,
     Guid BankAccountId,
     Guid? CardId);

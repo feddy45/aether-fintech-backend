@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Modules.BankAccounts.Core;
 using Modules.BankAccounts.Core.Dtos;
+using Modules.BankAccounts.Core.Enums;
 using Modules.Shared.Results;
 using Modules.Transfers.Core;
 using Modules.Transfers.Core.Dtos;
@@ -43,7 +44,7 @@ internal static class MediatorBankTransferHandler
             request.Amount,
             DateTime.UtcNow,
             request.Description,
-            "transfer",
+            TransactionType.Transfer,
             request.BankAccountId
         ));
 
