@@ -4,5 +4,5 @@ namespace Modules.Transfers.Core.Dependencies;
 
 public interface ITransfersReader
 {
-    Task<TransferListDto> Read();
+    Task<TransferListDto> Read(Guid userId);
 }

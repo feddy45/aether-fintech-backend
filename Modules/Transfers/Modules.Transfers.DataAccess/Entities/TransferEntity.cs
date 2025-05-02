@@ -10,4 +10,5 @@ public record TransferEntity
     public required string Description { get; init; }
     public Guid BankAccountId { get; init; }
     public Guid TransactionId { get; init; }
+    public required BankAccountEntity BankAccount { get; init; }
 }

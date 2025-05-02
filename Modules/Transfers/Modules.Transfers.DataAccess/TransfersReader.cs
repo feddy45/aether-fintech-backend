@@ -7,11 +7,12 @@ namespace Modules.Transfers.DataAccess;
 
 internal class TransfersReader(TransfersDbContext dbContext) : ITransfersReader
 {
-    public async Task<TransferListDto> Read()
+    public async Task<TransferListDto> Read(Guid userId)
     {
         var transfers = await dbContext.Transfer
             .AsNoTracking()
             .OrderByDescending(t => t.Date)
+            .Where(t => t.BankAccount.UserId == userId)
             .Select(transfer => new TransferDto(
                 transfer.Id,
                 transfer.Iban,

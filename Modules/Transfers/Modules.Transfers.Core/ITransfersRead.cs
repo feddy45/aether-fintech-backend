@@ -6,5 +6,5 @@ namespace Modules.Transfers.Core;
 
 public interface ITransfersRead
 {
-    Task<Either<ErrorResult, TransferListDto>> Read();
+    Task<Either<ErrorResult, TransferListDto>> Read(Guid userId);
 }

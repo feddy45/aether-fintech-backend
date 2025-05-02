@@ -7,11 +7,11 @@ namespace Modules.Transfers.Core.Concretes;
 
 internal class TransfersRead(ITransfersReader transfersReader) : ITransfersRead
 {
-    public async Task<Either<ErrorResult, TransferListDto>> Read()
+    public async Task<Either<ErrorResult, TransferListDto>> Read(Guid userId)
     {
         try
         {
-            return await transfersReader.Read();
+            return await transfersReader.Read(userId);
         }
         catch (Exception e)
         {
