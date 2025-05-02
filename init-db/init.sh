@@ -1,14 +1,9 @@
 #!/bin/bash
 set -e
 
-export PGPASSWORD="$POSTGRES_PASSWORD"
+export PGPASSWORD="${POSTGRES_PASSWORD:-postgres}"
 
-echo "⏳ Aspetto che il database sia pronto..."
-until pg_isready -h db -U "$POSTGRES_USER" -d "$POSTGRES_DB"; do
-  sleep 1
-done
-
-echo "✅ Database pronto, eseguo script di inizializzazione..."
-psql -h db -U "$POSTGRES_USER" -d "$POSTGRES_DB" -f /init-db/init-db.sql
+echo "✅ Eseguo script SQL di inizializzazione..."
+psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -f /docker-entrypoint-initdb.d/init-db.sql
 
 echo "🎉 Inizializzazione completata!"
