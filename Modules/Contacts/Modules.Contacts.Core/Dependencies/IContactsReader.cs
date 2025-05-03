@@ -4,5 +4,5 @@ namespace Modules.Contacts.Core.Dependencies;
 
 public interface IContactsReader
 {
-    Task<ContactListDto> Read();
+    Task<ContactListDto> Read(Guid userId);
 }

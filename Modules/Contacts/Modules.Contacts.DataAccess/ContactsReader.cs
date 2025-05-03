@@ -1,23 +1,25 @@
-﻿using Modules.Contacts.Core.Dependencies;
+﻿using Microsoft.EntityFrameworkCore;
+using Modules.Contacts.Core.Dependencies;
 using Modules.Contacts.Core.Dtos;
+using Modules.Contacts.DataAccess.DatabaseModels;
 
 namespace Modules.Contacts.DataAccess;
 
-internal class ContactsReader : IContactsReader
+internal class ContactsReader(ContactsDbContext dbContext) : IContactsReader
 {
-    public Task<ContactListDto> Read()
+    public async Task<ContactListDto> Read(Guid userId)
     {
-        return Task.FromResult(new ContactListDto([
-            new ContactDto(new Guid("cf9e6485-db96-4942-a07c-65f106d47542"), "Federico", "Ghezzo",
-                "IT60X0542811101000000123456"),
-            new ContactDto(new Guid("cf9e6485-db96-4942-a07c-65f106d47542"), "Pluto", "Pippo",
-                "IT60X0542811101000000123458"),
-            new ContactDto(new Guid("cf9e6485-db96-4942-a07c-65f106d47542"), "Mario", "Rossi",
-                "IT60X0542811101000000123459"),
-            new ContactDto(new Guid("cf9e6485-db96-4942-a07c-65f106d47542"), "Luigi", "Verdi",
-                "IT60X0542811101000000123462"),
-            new ContactDto(new Guid("cf9e6485-db96-4942-a07c-65f106d47542"), "Giovanna", "Bianca",
-                "IT60X0542811101000000123466")
-        ]));
+        var contacts = await dbContext.Contact
+            .AsNoTracking()
+            .Where(c => c.UserId == userId)
+            .Select(contact => new ContactDto(
+                contact.UserId,
+                contact.FirstName,
+                contact.LastName,
+                contact.Iban
+            ))
+            .ToListAsync();
+
+        return new ContactListDto(contacts);
     }
 }

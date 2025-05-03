@@ -6,5 +6,5 @@ namespace Modules.Contacts.Core;
 
 public interface IContactsRead
 {
-    Task<Either<ErrorResult, ContactListDto>> Read();
+    Task<Either<ErrorResult, ContactListDto>> Read(Guid userId);
 }

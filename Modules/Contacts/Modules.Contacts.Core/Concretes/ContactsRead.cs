@@ -7,11 +7,11 @@ namespace Modules.Contacts.Core.Concretes;
 
 internal class ContactsRead(IContactsReader contactsReader) : IContactsRead
 {
-    public async Task<Either<ErrorResult, ContactListDto>> Read()
+    public async Task<Either<ErrorResult, ContactListDto>> Read(Guid userId)
     {
         try
         {
-            return await contactsReader.Read();
+            return await contactsReader.Read(userId);
         }
         catch (Exception e)
         {

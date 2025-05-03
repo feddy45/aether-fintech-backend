@@ -19,6 +19,14 @@ CREATE TABLE IF NOT EXISTS "BankAccount" (
      createdat TIMESTAMP NOT NULL DEFAULT now()
 );
 
+CREATE TABLE IF NOT EXISTS "Contact" (
+     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+     iban TEXT NOT NULL UNIQUE,
+     firstname TEXT NOT NULL,
+     lastname TEXT NOT NULL,
+     userid UUID NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS "Card" (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     cardnumber TEXT NOT NULL,
@@ -64,19 +72,34 @@ BEGIN
             '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df',
             'federico',
             'AQAAAAIAAYagAAAAEMcL8OpZkMzUfwNmlay+7NU8RML68iutx4d/xIiSRWIfL17Y2uoq79ofIr8o39r6bA==',
-            '1995-03-08',
-        'federico.ghezzo95@gmail.com',
+            '1989-06-12',
+        'federico.ghezzo@example.com',
             'Federico',
             'Ghezzo'
         ),(
             '9f9746d9-f3c4-4b84-8b01-58cd81d2f0df', 
-           'giulia.rossi', 
-           'password-hash-placeholder', 
+           'giulia', 
+           'AQAAAAIAAYagAAAAEMcL8OpZkMzUfwNmlay+7NU8RML68iutx4d/xIiSRWIfL17Y2uoq79ofIr8o39r6bA==', 
            '1990-05-15', 
            'giulia.rossi@example.com', 
            'Giulia', 
            'Rossi'
         );
+    END IF;
+    
+    IF NOT EXISTS (SELECT 1 FROM "Contact") THEN
+        INSERT INTO "Contact" (iban, firstname, lastname, userid) 
+        VALUES 
+        ('IT60X0542811101000000123456','Mario', 'Rossi', '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df'),
+        ('IT60X0542811101000000123462','Luigi', 'Verdi', '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df'),
+        ('IT60X0542811101000000123466','Giovanna', 'Bianca', '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df'),
+        ('IT60X0542811101000000123460','Paolo', 'Gialli', '1b1dd5c6-afe5-4bd7-bb41-1a6b1e9ce8df'),
+        ('IT60X0542811101000000123470','Anna', 'Neri', '9f9746d9-f3c4-4b84-8b01-58cd81d2f0df'),
+        ('IT60X0542811101000000123471','Marco', 'Blu', '9f9746d9-f3c4-4b84-8b01-58cd81d2f0df'),
+        ('IT60X0542811101000000123472','Sara', 'Rosa', '9f9746d9-f3c4-4b84-8b01-58cd81d2f0df'),
+        ('IT60X0542811101000000123473','Luca', 'Marrone', '9f9746d9-f3c4-4b84-8b01-58cd81d2f0df'),
+        ('IT60X0542811101000000123474','Elena', 'Viola', '9f9746d9-f3c4-4b84-8b01-58cd81d2f0df'),
+        ('IT60X0542811101000000123475','Giorgio', 'Grigi', '9f9746d9-f3c4-4b84-8b01-58cd81d2f0df');
     END IF;
     
     IF NOT EXISTS (SELECT 1 FROM "BankAccount") THEN
