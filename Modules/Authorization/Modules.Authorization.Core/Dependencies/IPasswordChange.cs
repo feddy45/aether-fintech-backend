@@ -5,5 +5,5 @@ namespace Modules.Authorization.Core.Dependencies;
 
 public interface IPasswordChange
 {
-    Task<Result<string>> ChangePassword(ChangePasswordDto changePassword);
+    Task<Result<string>> ChangePassword(Guid userId, ChangePasswordDto changePassword);
 }

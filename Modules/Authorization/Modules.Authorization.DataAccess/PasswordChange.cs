@@ -10,9 +10,9 @@ namespace Modules.Authorization.DataAccess;
 
 internal class PasswordChange(UsersDbContext dbContext, IPasswordHasher<UserEntity> passwordHasher) : IPasswordChange
 {
-    public async Task<Result<string>> ChangePassword(ChangePasswordDto changePassword)
+    public async Task<Result<string>> ChangePassword(Guid userId, ChangePasswordDto changePassword)
     {
-        var user = await dbContext.User.FirstOrDefaultAsync(u => u.Username == changePassword.Username);
+        var user = await dbContext.User.FirstOrDefaultAsync(u => u.Id == userId);
         if (user is null)
             return new GenericErrorResult("User not found");
 

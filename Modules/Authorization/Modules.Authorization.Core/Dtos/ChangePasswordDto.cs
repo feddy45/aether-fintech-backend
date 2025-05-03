@@ -1,3 +1,3 @@
 namespace Modules.Authorization.Core.Dtos;
 
-public record ChangePasswordDto(string Username, string OldPassword, string NewPassword);
+public record ChangePasswordDto(string OldPassword, string NewPassword);

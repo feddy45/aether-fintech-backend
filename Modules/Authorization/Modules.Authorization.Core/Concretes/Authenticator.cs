@@ -9,18 +9,14 @@ public class Authenticator(IUserReader userReader, IJwtCreator jwtCreator) : IAu
 {
     public async Task<Either<ErrorResult, LoginSuccessfulDto>> Authenticate(LoginUserDto user)
     {
-        try
-        {
-            var dbUser = await userReader.Read(user);
-            if (dbUser == null) return new GenericErrorResult("User not found");
+        var dbUserResult = await userReader.Read(user);
 
-            var token = await jwtCreator.CreateToken(dbUser);
-
-            return new LoginSuccessfulDto(token);
-        }
-        catch (Exception e)
-        {
-            return new GenericErrorResult(e.Message);
-        }
+        return await dbUserResult.MatchAsync(
+            async validUser =>
+            {
+                var token = await jwtCreator.CreateToken(validUser);
+                return Either<ErrorResult, LoginSuccessfulDto>.Right(new LoginSuccessfulDto(token));
+            },
+            error => Task.FromResult(Either<ErrorResult, LoginSuccessfulDto>.Left(error)));
     }
 }

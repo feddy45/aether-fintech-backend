@@ -6,5 +6,5 @@ namespace Modules.Authorization.Core;
 
 public interface IPasswordChanger
 {
-    Task<Either<ErrorResult, GenericSuccessResult>> ChangePassword(ChangePasswordDto changePassword);
+    Task<Either<ErrorResult, GenericSuccessResult>> ChangePassword(Guid userId, ChangePasswordDto changePassword);
 }

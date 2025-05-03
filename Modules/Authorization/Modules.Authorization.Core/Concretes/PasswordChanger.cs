@@ -7,11 +7,12 @@ namespace Modules.Authorization.Core.Concretes;
 
 public class PasswordChanger(IPasswordChange passwordChange) : IPasswordChanger
 {
-    public async Task<Either<ErrorResult, GenericSuccessResult>> ChangePassword(ChangePasswordDto changePassword)
+    public async Task<Either<ErrorResult, GenericSuccessResult>> ChangePassword(Guid userId,
+        ChangePasswordDto changePassword)
     {
         try
         {
-            var result = await passwordChange.ChangePassword(changePassword);
+            var result = await passwordChange.ChangePassword(userId, changePassword);
 
             return result.IsSuccess ? new GenericSuccessResult(result.Data) : new GenericErrorResult(result.Data);
         }
