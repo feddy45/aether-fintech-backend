@@ -46,3 +46,7 @@ Altrimenti, se si ha un ide che supporta l'avvio di progetti, è possibile avvia
 
 - Il file `appsettings.Development.json` contiene le configurazioni di sviluppo.
 - Il progetto è suddiviso in moduli, ognuno con i propri layer (`Api`, `Core`, `DataAccess`), per favorire la manutenibilità e l'espandibilità.
+- Per eseguire l'accesso all'applicazione si possono utilizzare gli utenti con username:
+  - federico
+  - giulia
+    la password, identica per tutti e due gli utenti, è "Aether123."
