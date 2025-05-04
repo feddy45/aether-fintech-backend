@@ -12,19 +12,19 @@ Prima di avviare l'applicazione, assicurarsi di avere installato:
 
 ## Avvio del database
 
-Per avviare il database (e gli eventuali altri servizi definiti nel `docker-compose.yaml`), esegui il seguente comando dalla root del progetto:
+Per avviare il database, esegui il seguente comando dalla root del progetto:
 
 ```bash
 docker-compose up -d
 ```
 
-Questo comando avvierà i contenitori in background. Puoi controllare che tutto sia funzionante con:
+Questo comando avvierà i containers in background. Puoi controllare che tutto sia funzionante con:
 
 ```bash
 docker ps
 ```
 
-Per fermare i contenitori:
+Per fermare i containers:
 
 ```bash
 docker-compose down
@@ -35,10 +35,12 @@ docker-compose down
 Una volta avviato il database, puoi eseguire l'applicazione con il comando:
 
 ```bash
-dotnet run --project src/Aether.Fintech.Api
+dotnet run --project Web.Api
 ```
 
-Assicurati di modificare il percorso nel comando `--project` in base alla struttura effettiva della tua soluzione, se diversa.
+Una volta avviata l'applicazione si può accedere a Swagger tramite l'indirizzo `http://localhost:5118/api/v1/swagger/index.html`.
+
+Altrimenti, se si ha un ide che supporta l'avvio di progetti, è possibile avviare il progetto `Web.Api` direttamente dall'IDE e automaticamente verrà aperto lo Swagger dell'applicazione.
 
 ## Note aggiuntive
 
